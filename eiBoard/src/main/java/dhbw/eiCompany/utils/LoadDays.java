@@ -1,5 +1,6 @@
 package dhbw.eiCompany.utils;
 
+import dhbw.eiCompany.controller.DateController;
 import dhbw.eiCompany.timetable.Lecture;
 import dhbw.eiCompany.timetable.ScheduleDay;
 import dhbw.timetable.rapla.exceptions.NoConnectionException;
@@ -20,11 +21,12 @@ public class LoadDays {
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
-        ScheduleDay day = null;
+        api.getService().getData().forEach(t -> ScheduleDay.getInstance(t.getDate()).clearAll());
+    
         for(Lecture l : api.getService().getData()){
-            day = ScheduleDay.getInstance(l.getDate());
-            day.addLecture(l);
+           ScheduleDay.getInstance(l.getDate()).addLecture(l);
         }
-        return day;
+        
+        return ScheduleDay.getInstance(date);
     }
 }

@@ -10,17 +10,19 @@ public class ScheduleDay{
     private static List<ScheduleDay> scheduleDays = new ArrayList<ScheduleDay>();
     private LocalDate date;
 
-    private ScheduleDay() {
+    private ScheduleDay(LocalDate date) {
+    	this.date = date;
     }
 
     public static ScheduleDay getInstance(LocalDate date){
         for (ScheduleDay day : scheduleDays){
-            if(day.getDate() != null && day.getDate().equals(date)){
+            if(day.getDate() != null && day.getDate().toString().equalsIgnoreCase(date.toString())){
                 return day;
             }
         }
-        ScheduleDay day = new ScheduleDay();
+        ScheduleDay day = new ScheduleDay(date);
         scheduleDays.add(day);
+      
         return day;
     }
 
@@ -32,7 +34,7 @@ public class ScheduleDay{
         this.date = date;
     }
 
-    public void clearAll(){
+    public  void clearAll(){
         scheduleDays = new ArrayList<ScheduleDay>();
         lectureList = new ArrayList<Lecture>();
     }
