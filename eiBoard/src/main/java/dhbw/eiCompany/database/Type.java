@@ -7,11 +7,11 @@ import javax.persistence.Id;
 import java.awt.*;
 import java.time.LocalDate;
 
-@Entity
+@Entity(name = "type")
 public class Type {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String typeId;
+    private Long typeId;
     private String typeName;
     private String typeDescribtion;
     private int priority;
@@ -26,11 +26,11 @@ public class Type {
         this.foreignKey = foreignKey;
     }
 
-    public String getTypeId() {
+    public Long getTypeId() {
         return typeId;
     }
 
-    public void setTypeId(String typeId) {
+    public void setTypeId(Long typeId) {
         this.typeId = typeId;
     }
 

@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import java.awt.*;
 import java.time.LocalDate;
 
-@Entity
+@Entity(name = "entry")
 public class Entry {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
