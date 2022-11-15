@@ -1,0 +1,20 @@
+.idea
+eiBoard/.settings
+eiBoard/bin
+eiBoard/target
+eiBoard/.classpath
+eiboard/.project
+eiBoard/eiBoard.iml
+eiBoard/mvnm
+eiBoard/mvnw.cmd
+.project
+Backend.iml
+README.md
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
