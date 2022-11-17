@@ -34,6 +34,7 @@ public class LoadDatabase {
         julian.setPicture("test");
         julian.setRang(Rank.USER);
         julian.setDescribtion("test");
+        usersRepository.save(julian);
 
 
 
@@ -45,7 +46,7 @@ public class LoadDatabase {
         test.setPicture("test");
         test.setRang(Rank.USER);
         test.setDescribtion("test");
-
+        usersRepository.save(test);
 
         Entry testEntry = new Entry();
         testEntry.setName("Testname");
@@ -54,12 +55,14 @@ public class LoadDatabase {
         testEntry.setDate(LocalDate.now());
         testEntry.setTypId("TypID_1");
         testEntry.setUser("Std1x");
+        entryRepository.save(testEntry);
 
         Type testType = new Type();
         testType.setTypeName("testType");
         testType.setTypeDescribtion("testDescribtion");
         testType.setPriority(10);
         testType.setForeignKey("test");
+        typeRepository.save(testType);
 
     }
 }

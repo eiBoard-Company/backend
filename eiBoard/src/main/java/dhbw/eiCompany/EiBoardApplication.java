@@ -16,7 +16,7 @@ import java.net.MalformedURLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-@SpringBootApplication(scanBasePackages = "dhbw.eiCompany")
+@SpringBootApplication(exclude={DataSourceAutoConfiguration.class}, scanBasePackages = "dhbw.eiCompany")
 @EnableJpaRepositories(basePackages = {"dhbw.eiCompany.repositories"})
 @EntityScan(basePackages = {"dhbw.eiCompany.database"})
 public class EiBoardApplication {
