@@ -13,8 +13,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import java.net.MalformedURLException;
-import java.time.LocalDate;
-import java.util.ArrayList;
 
 @SpringBootApplication( scanBasePackages = "dhbw.eiCompany")
 @EnableJpaRepositories(basePackages = {"dhbw.eiCompany.repositories"})
