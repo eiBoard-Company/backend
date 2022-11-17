@@ -15,13 +15,13 @@ public class PersonServiceImp implements PersonService{
     UsersRepository usersRepository;
 
     @Override
-    public String findByName(String name) {
-        return name;
+    public Person findByName(String name) {
+        return usersRepository.findByName(name);
     }
 
     public List<Person> getAllUser(){
 
-        return new ArrayList<Person>(usersRepository.findAll());
+        return new ArrayList<>(usersRepository.findAll());
     }
 
     public void saveOrUpdate(Person name){

@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import dhbw.eiCompany.database.Person;
-import dhbw.eiCompany.repositories.UsersRepository;
 
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class UserController {
     PersonService personService;
 
     @GetMapping(path ="/user/{name}")
-    public String users(@PathVariable String name){
+    public Person users(@PathVariable String name){
         return personService.findByName(name);
     }
 

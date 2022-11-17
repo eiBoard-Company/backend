@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface PersonService {
 
-    String findByName(String name);
+    Person findByName(String name);
     List<Person> getAllUser();
     void saveOrUpdate(Person name);
     void delete(Person name);
