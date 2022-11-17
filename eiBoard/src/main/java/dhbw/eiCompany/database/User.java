@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity(name = "users")
-public class Users {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userId;
@@ -15,7 +15,7 @@ public class Users {
     private String email;
     private String picture;
     private String describtion;
-    private UserRang rang;
+    private Rank rang;
     private String entryId;
 
     public Long getUserId() {
@@ -66,11 +66,11 @@ public class Users {
         this.describtion = describtion;
     }
 
-    public UserRang getRang() {
+    public Rank getRang() {
         return rang;
     }
 
-    public void setRang(UserRang rang) {
+    public void setRang(Rank rang) {
         this.rang = rang;
     }
 

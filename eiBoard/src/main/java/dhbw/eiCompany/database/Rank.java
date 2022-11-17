@@ -1,9 +1,9 @@
 package dhbw.eiCompany.database;
 
-public enum UserRang {
+public enum Rank {
     USER("User"), VERIFIED("Verified User"), ADMIN("Admin");
 
-    UserRang(String rang) {
+    Rank(String rang) {
 
     }
 }

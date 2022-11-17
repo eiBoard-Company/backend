@@ -26,24 +26,24 @@ public class LoadDatabase {
     @PostConstruct
     public void loadDatabase(){
 
-        Users julian = new Users();
+        User julian = new User();
         julian.setName("Julian Stadler");
         julian.setEmail("julian@stadler-privat.de");
         julian.setPassword("1234");
         julian.setEntryId("1");
         julian.setPicture("test");
-        julian.setRang(UserRang.USER);
+        julian.setRang(Rank.USER);
         julian.setDescribtion("test");
 
 
 
-        Users test = new Users();
+        User test = new User();
         test.setName("test");
         test.setEmail("test");
         test.setPassword("test");
         test.setEntryId("test");
         test.setPicture("test");
-        test.setRang(UserRang.USER);
+        test.setRang(Rank.USER);
         test.setDescribtion("test");
 
 
