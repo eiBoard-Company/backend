@@ -1,25 +1,42 @@
 package dhbw.eiCompany.database;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.awt.*;
 import java.time.LocalDate;
 
 @Entity(name = "Entries")
-public class Entries {
+public class Entry {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long entryId;
 
+    @Column
     private String name;
+    @Column
     private Color color;
+    @Column
     private LocalDate date;
+    @Column
     private String category;
+    @Column
     private String description;
-    private String person;
+    @ManyToOne
+    private Person person;
+    @Column
     private String typId;
+
+    public Entry(){}
+
+    public Entry(Long entryId, String name, Color color, LocalDate date, String category, String description, Person person, String typId) {
+        this.entryId = entryId;
+        this.name = name;
+        this.color = color;
+        this.date = date;
+        this.category = category;
+        this.description = description;
+        this.person = person;
+        this.typId = typId;
+    }
 
     public String getTypId() {
         return typId;
@@ -77,11 +94,11 @@ public class Entries {
         this.description = description;
     }
 
-    public String getPerson() {
+    public Person getPerson() {
         return person;
     }
 
-    public void setPerson(String person) {
+    public void setPerson(Person person) {
         this.person = person;
     }
 }

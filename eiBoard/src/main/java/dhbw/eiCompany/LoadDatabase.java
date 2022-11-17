@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import java.awt.*;
 import java.time.LocalDate;
 
@@ -37,7 +35,7 @@ public class LoadDatabase {
         julian.setEntryId("1");
         julian.setPicture("test");
         julian.setRang(Rank.USER);
-        julian.setDescribtion("test");
+        julian.setDescription("test");
         usersRepository.save(julian);
 
         Person eileen = new Person();
@@ -47,7 +45,7 @@ public class LoadDatabase {
         eileen.setEntryId("1");
         eileen.setPicture("http://onlyfans.de/eileen");
         eileen.setRang(Rank.ADMIN);
-        eileen.setDescribtion("Hey, ich bin Eileen und ich bin ein Veganer und habe ein schönes veganes Leben");
+        eileen.setDescription("Hey, ich bin Eileen und ich bin ein Veganer und habe ein schönes veganes Leben");
         usersRepository.save(eileen);
 
         Person test = new Person();
@@ -57,17 +55,26 @@ public class LoadDatabase {
         test.setEntryId("test");
         test.setPicture("test");
         test.setRang(Rank.USER);
-        test.setDescribtion("test");
+        test.setDescription("test");
         usersRepository.save(test);
 
-        Entries testEntry = new Entries();
+        Entry testEntry = new Entry();
         testEntry.setName("Testname");
         testEntry.setDescription("Testbeschreibung");
         testEntry.setColor(Color.GRAY);
         testEntry.setDate(LocalDate.now());
         testEntry.setTypId("TypID_1");
-        testEntry.setPerson("Std1x");
+        testEntry.setPerson(julian);
         entryRepository.save(testEntry);
+
+        Entry testEntry2 = new Entry();
+        testEntry2.setName("test2");
+        testEntry2.setDescription("Testbeschreibung2");
+        testEntry2.setColor(Color.GRAY);
+        testEntry2.setDate(LocalDate.now());
+        testEntry2.setTypId("TypID_1_2");
+        testEntry2.setPerson(eileen);
+        entryRepository.save(testEntry2);
 
         Type testType = new Type();
         testType.setTypeName("testType");

@@ -14,9 +14,23 @@ public class Person {
     private String password;
     private String email;
     private String picture;
-    private String describtion;
+    private String description;
     private Rank rang;
     private String entryId;
+    public Person(){
+
+    }
+
+    public Person(Long userId, String name, String password, String email, String picture, String description, Rank rang, String entryId) {
+        this.userId = userId;
+        this.name = name;
+        this.password = password;
+        this.email = email;
+        this.picture = picture;
+        this.description = description;
+        this.rang = rang;
+        this.entryId = entryId;
+    }
 
     public Long getUserId() {
         return userId;
@@ -58,12 +72,12 @@ public class Person {
         this.picture = picture;
     }
 
-    public String getDescribtion() {
-        return describtion;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescribtion(String describtion) {
-        this.describtion = describtion;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Rank getRang() {

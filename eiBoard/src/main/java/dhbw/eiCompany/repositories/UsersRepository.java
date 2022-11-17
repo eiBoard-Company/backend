@@ -5,8 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import dhbw.eiCompany.database.Person;
 
+import java.util.List;
+
 @Repository
 public interface UsersRepository extends JpaRepository<Person, Long> {
-    // gerneriert SQL String damit wir auf Objekte mit dem Name finden können
-	Person findByName(String name);
+
 }
