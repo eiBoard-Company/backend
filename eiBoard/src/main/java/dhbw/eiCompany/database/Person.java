@@ -5,8 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name = "user")
-public class User {
+@Entity(name = "Person")
+public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userId;

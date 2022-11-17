@@ -7,8 +7,8 @@ import javax.persistence.Id;
 import java.awt.*;
 import java.time.LocalDate;
 
-@Entity(name = "entry")
-public class Entry {
+@Entity(name = "Entries")
+public class Entries {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long entryId;
@@ -17,8 +17,8 @@ public class Entry {
     private Color color;
     private LocalDate date;
     private String category;
-    private String describtion;
-    private String user;
+    private String description;
+    private String person;
     private String typId;
 
     public String getTypId() {
@@ -69,19 +69,19 @@ public class Entry {
         this.category = category;
     }
 
-    public String getDescribtion() {
-        return describtion;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescribtion(String describtion) {
-        this.describtion = describtion;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getUser() {
-        return user;
+    public String getPerson() {
+        return person;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setPerson(String person) {
+        this.person = person;
     }
 }

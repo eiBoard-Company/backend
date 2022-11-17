@@ -5,13 +5,16 @@ import dhbw.eiCompany.repositories.EntryRepository;
 import dhbw.eiCompany.repositories.TypeRepository;
 import dhbw.eiCompany.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.awt.*;
 import java.time.LocalDate;
 
-@Component
+@Configuration
 public class LoadDatabase {
 
     @Autowired
@@ -23,10 +26,11 @@ public class LoadDatabase {
     @Autowired
     EntryRepository entryRepository;
 
-    @PostConstruct
-    public void loadDatabase(){
+    @Bean
+	public CommandLineRunner initDatabase() {
+		return args -> {
 
-        User julian = new User();
+        Person julian = new Person();
         julian.setName("Julian Stadler");
         julian.setEmail("julian@stadler-privat.de");
         julian.setPassword("1234");
@@ -36,9 +40,17 @@ public class LoadDatabase {
         julian.setDescribtion("test");
         usersRepository.save(julian);
 
+        Person eileen = new Person();
+        eileen.setName("Eileen Staar");
+        eileen.setEmail("eileen@swr-rip-newszone.com");
+        eileen.setPassword("Vegan4Ever");
+        eileen.setEntryId("1");
+        eileen.setPicture("http://onlyfans.de/eileen");
+        eileen.setRang(Rank.ADMIN);
+        eileen.setDescribtion("Hey, ich bin Eileen und ich bin ein Veganer und habe ein schönes veganes Leben");
+        usersRepository.save(eileen);
 
-
-        User test = new User();
+        Person test = new Person();
         test.setName("test");
         test.setEmail("test");
         test.setPassword("test");
@@ -48,13 +60,13 @@ public class LoadDatabase {
         test.setDescribtion("test");
         usersRepository.save(test);
 
-        Entry testEntry = new Entry();
+        Entries testEntry = new Entries();
         testEntry.setName("Testname");
-        testEntry.setDescribtion("Testbeschreibung");
+        testEntry.setDescription("Testbeschreibung");
         testEntry.setColor(Color.GRAY);
         testEntry.setDate(LocalDate.now());
         testEntry.setTypId("TypID_1");
-        testEntry.setUser("Std1x");
+        testEntry.setPerson("Std1x");
         entryRepository.save(testEntry);
 
         Type testType = new Type();
@@ -63,6 +75,6 @@ public class LoadDatabase {
         testType.setPriority(10);
         testType.setForeignKey("test");
         typeRepository.save(testType);
-
+		};
     }
 }

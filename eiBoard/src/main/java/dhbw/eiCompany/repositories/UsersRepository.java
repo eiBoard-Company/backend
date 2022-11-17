@@ -1,11 +1,12 @@
 package dhbw.eiCompany.repositories;
 
-import dhbw.eiCompany.database.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import dhbw.eiCompany.database.Person;
+
 @Repository
-public interface UsersRepository extends JpaRepository<User, Long> {
+public interface UsersRepository extends JpaRepository<Person, Long> {
     // gerneriert SQL String damit wir auf Objekte mit dem Name finden können
-    User findByName(String name);
+	Person findByName(String name);
 }
