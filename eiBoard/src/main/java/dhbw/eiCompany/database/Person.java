@@ -1,21 +1,25 @@
 package dhbw.eiCompany.database;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity(name = "Person")
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userId;
+    @Column
     private String name;
+    @Column
     private String password;
+    @Column
     private String email;
+    @Column
     private String picture;
+    @Column
     private String description;
+    @Column
     private Rank rang;
+    @Column
     private String entryId;
     public Person(){
 
