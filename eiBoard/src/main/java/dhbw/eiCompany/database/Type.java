@@ -1,9 +1,6 @@
 package dhbw.eiCompany.database;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.awt.*;
 import java.time.LocalDate;
 
@@ -12,10 +9,15 @@ public class Type {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long typeId;
+    @Column
     private String typeName;
+    @Column
     private String typeDescribtion;
+    @Column
     private int priority;
+    @Column
     private Long entryID;
+    @Column
     private String foreignKey;
 
     public String getForeignKey() {
