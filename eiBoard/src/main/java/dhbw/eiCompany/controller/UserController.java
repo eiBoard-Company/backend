@@ -2,6 +2,8 @@ package dhbw.eiCompany.controller;
 
 import dhbw.eiCompany.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import dhbw.eiCompany.database.Person;
@@ -15,23 +17,24 @@ public class UserController {
     PersonService personService;
 
     @GetMapping(path ="/user/{name}")
-    public Person users(@PathVariable String name){
-        return personService.findByName(name);
+    public ResponseEntity<Person> users(@PathVariable String name){
+        return new ResponseEntity<>(personService.findByName(name), HttpStatus.OK);
     }
 
     @GetMapping(path = "/user")
-    public List<Person> getAllUser(){
-        return personService.getAllUser();
+    public ResponseEntity<List<Person>> getAllUser(){
+        return new ResponseEntity<>(personService.getAllUser(), HttpStatus.OK);
     }
 
     @DeleteMapping("/user/{name}")
-    private void deleteUser(@PathVariable("name") Person name){
+    private ResponseEntity<Person> deleteUser(@PathVariable("name") Person name){
         personService.delete(name);
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 
     @PostMapping(path="/user")
-    private Long saveUser(@RequestBody Person name){
+    private ResponseEntity<Long> saveUser(@RequestBody Person name){
         personService.saveOrUpdate(name);
-        return name.getUserId();
+        return new ResponseEntity<>(name.getUserId(), HttpStatus.ACCEPTED);
     }
 }

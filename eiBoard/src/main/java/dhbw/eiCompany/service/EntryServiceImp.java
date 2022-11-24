@@ -15,10 +15,9 @@ public class EntryServiceImp implements EntryService{
     EntryRepository entryRepository;
 
     @Override
-    public void saveOrUpdate(Entry entry) {
+    public void save(Entry entry) {
         entryRepository.save(entry);
     }
-
     @Override
     public void delete(Long entryId) {
         entryRepository.deleteById(entryId);

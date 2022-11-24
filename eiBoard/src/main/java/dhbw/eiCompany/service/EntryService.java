@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface EntryService {
 
-    void saveOrUpdate(Entry entry);
+    void save(Entry entry);
     void delete(Long entryId);
 
     Entry findById(Long entryId);

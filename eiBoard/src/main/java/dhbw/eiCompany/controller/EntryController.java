@@ -2,10 +2,11 @@ package dhbw.eiCompany.controller;
 
 import dhbw.eiCompany.service.EntryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import dhbw.eiCompany.database.Entry;
-import dhbw.eiCompany.repositories.EntryRepository;
 
 import java.util.List;
 
@@ -16,24 +17,25 @@ public class EntryController {
     EntryService entryService;
 
     @PostMapping(path = "/entry")
-    private Long saveEntry(@RequestBody Entry entry){
-        entryService.saveOrUpdate(entry);
-        return entry.getEntryId();
+    private ResponseEntity<Long> saveEntry(@RequestBody Entry entry){
+        entryService.save(entry);
+        return new ResponseEntity<>(entry.getEntryId(), HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping(path = "/entries/{id}")
-    private void deleteEntry(@PathVariable("id") Long entryId){
+    private ResponseEntity<Entry> deleteEntry(@PathVariable("id") Long entryId){
         entryService.delete(entryId);
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 
     @GetMapping(path = "/entries/{id}")
-    private Entry findById(@PathVariable("id") Long entryId){
-        return entryService.findById(entryId);
+    private ResponseEntity<Entry> findById(@PathVariable("id") Long entryId){
+        return new ResponseEntity<>(entryService.findById(entryId), HttpStatus.OK);
     }
 
     @GetMapping(path = "/entries")
-    private List<Entry> getAllEntries(){
-        return entryService.getAllEntries();
+    private ResponseEntity<List<Entry>> getAllEntries(){
+        return new ResponseEntity<>(entryService.getAllEntries(), HttpStatus.OK);
     }
 
 
