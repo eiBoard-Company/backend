@@ -1,12 +1,12 @@
 package dhbw.eiCompany.controller;
 
-import dhbw.eiCompany.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import dhbw.eiCompany.database.Person;
+import dhbw.eiCompany.interfaces.PersonService;
 
 import java.util.List;
 

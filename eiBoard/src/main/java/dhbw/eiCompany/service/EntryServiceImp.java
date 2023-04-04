@@ -1,6 +1,7 @@
 package dhbw.eiCompany.service;
 
 import dhbw.eiCompany.database.Entry;
+import dhbw.eiCompany.interfaces.EntryService;
 import dhbw.eiCompany.repositories.EntryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

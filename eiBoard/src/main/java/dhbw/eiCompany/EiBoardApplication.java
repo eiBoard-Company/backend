@@ -1,18 +1,14 @@
 package dhbw.eiCompany;
 
-import dhbw.eiCompany.service.DataService;
-import dhbw.eiCompany.utils.RaplaAPI;
-import dhbw.timetable.rapla.data.event.Appointment;
-import dhbw.timetable.rapla.exceptions.NoConnectionException;
-import org.springframework.beans.factory.annotation.Autowired;
+import java.net.MalformedURLException;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-import java.net.MalformedURLException;
+import dhbw.timetable.rapla.exceptions.NoConnectionException;
 
 @SpringBootApplication( scanBasePackages = "dhbw.eiCompany")
 @EnableJpaRepositories(basePackages = {"dhbw.eiCompany.repositories"})
