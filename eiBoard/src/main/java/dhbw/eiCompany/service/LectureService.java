@@ -35,7 +35,6 @@ public class LectureService {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
 			
 	    	   for(ArrayList<Appointment> value  : data.values()){
 	               for(Appointment app : value){
