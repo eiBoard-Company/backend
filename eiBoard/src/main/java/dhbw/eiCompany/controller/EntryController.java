@@ -1,12 +1,12 @@
 package dhbw.eiCompany.controller;
 
-import dhbw.eiCompany.service.EntryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import dhbw.eiCompany.database.Entry;
+import dhbw.eiCompany.interfaces.EntryService;
 
 import java.util.List;
 

@@ -1,6 +1,7 @@
 package dhbw.eiCompany.service;
 
 import dhbw.eiCompany.database.Person;
+import dhbw.eiCompany.interfaces.PersonService;
 import dhbw.eiCompany.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
