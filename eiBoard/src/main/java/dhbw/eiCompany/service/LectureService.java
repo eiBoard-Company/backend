@@ -36,6 +36,7 @@ public class LectureService {
 					e.printStackTrace();
 				}
 			
+				
 	    	   for(ArrayList<Appointment> value  : data.values()){
 	               for(Appointment app : value){
 	            	   if(!app.getStartDate().toLocalDate().equals(date)) continue;
