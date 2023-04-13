@@ -24,6 +24,7 @@ public class SwaggerConfig {
 
 		flow.setTokenUrl(TOKENURL);
 
+		
 		Scopes scopes = new Scopes();
 		flow.setScopes(scopes);
 		flows = flows.password(flow);
