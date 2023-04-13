@@ -3,6 +3,7 @@ eiBoard/.settings
 eiBoard/bin
 eiBoard/target
 eiBoard/.classpath
+.class
 eiboard/.project
 eiBoard/eiBoard.iml
 eiBoard/mvnm
