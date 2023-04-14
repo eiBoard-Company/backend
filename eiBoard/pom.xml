@@ -13,6 +13,7 @@
 	
 	<name>eiBoard</name>
 	<description>eiBoard - a Dashboard for your needs</description>
+    <packaging>jar</packaging>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
