@@ -1,4 +1,4 @@
-package dhbw.eiCompany.service;
+package dhbw.eiCompany.interfaces;
 
 import java.util.List;
 
