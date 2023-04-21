@@ -2,38 +2,10 @@ pipeline{
     agent any
 
     stages {
-        stage('Versioncheck'){
+        stage('Test'){
             steps {
-                sh 'docker --version'
-                echo 'Checked Docker version'
-                sh 'docker-compose --version'
-                echo 'Checked Docker-compose version'
+                echo 'test run pipeline'
             }
         }
-        stage('Build'){
-            steps {
-                sh 'docker-compose build'
-                echo 'Building docker compose...'
-            }
-        }
-
-        stage('Start'){
-            steps{
-                sh 'docker-compose up'
-                echo 'Starting docker-compose'
-            }
-        }
-        stage('Testing'){
-            steps {
-                //run tests
-                echo 'Testing...'
-            }
-        }
-        stage('Deploying'){
-            steps {
-                //deploy
-                echo 'Deploying'
-            }
-        }
-    }
+    }        
 }
