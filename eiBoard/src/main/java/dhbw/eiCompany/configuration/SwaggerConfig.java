@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.security.OAuthFlow;
 import io.swagger.v3.oas.models.security.OAuthFlows;
@@ -32,6 +33,6 @@ public class SwaggerConfig {
 		return new OpenAPI()
 				.components(new Components().addSecuritySchemes("keycloak",
 						new SecurityScheme().type(SecurityScheme.Type.OAUTH2).flows(flows)))
-				.info(new Info().title("EiCompany").description("Swagger UI for the EiCompany Backend").version("0.0.1"));
+				.info(new Info().title("EiCompany").description("Swagger UI for the EiCompany Backend").version("0.0.1").contact(new Contact().email("eicompany2022@gmail.com").name("EiCompany")));
 	}
 }

@@ -1,12 +1,12 @@
-package dhbw.eiCompany.interfaces;
-
-import dhbw.eiCompany.database.Entry;
+package dhbw.eiCompany.service;
 
 import java.util.List;
 
+import dhbw.eiCompany.model.Entry;
+
 public interface EntryService {
 
-    void save(Entry entry);
+    Entry save(Entry entry);
     void delete(Long entryId);
 
     Entry findById(Long entryId);

@@ -1,13 +1,13 @@
 package dhbw.eiCompany.service;
 
-import dhbw.eiCompany.database.Entry;
-import dhbw.eiCompany.interfaces.EntryService;
-import dhbw.eiCompany.repositories.EntryRepository;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import dhbw.eiCompany.model.Entry;
+import dhbw.eiCompany.repositories.EntryRepository;
 
 @Service
 public class EntryServiceImp implements EntryService{
@@ -16,8 +16,8 @@ public class EntryServiceImp implements EntryService{
     EntryRepository entryRepository;
 
     @Override
-    public void save(Entry entry) {
-        entryRepository.save(entry);
+    public Entry save(Entry entry) {
+       return  entryRepository.save(entry);
     }
     @Override
     public void delete(Long entryId) {

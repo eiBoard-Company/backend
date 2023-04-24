@@ -1,16 +1,20 @@
 package dhbw.eiCompany;
 
-import dhbw.eiCompany.database.*;
-import dhbw.eiCompany.repositories.EntryRepository;
-import dhbw.eiCompany.repositories.TypeRepository;
-import dhbw.eiCompany.repositories.UsersRepository;
+import java.awt.Color;
+import java.time.LocalDate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.awt.*;
-import java.time.LocalDate;
+import dhbw.eiCompany.model.Entry;
+import dhbw.eiCompany.model.Person;
+import dhbw.eiCompany.model.Rank;
+import dhbw.eiCompany.model.Type;
+import dhbw.eiCompany.repositories.EntryRepository;
+import dhbw.eiCompany.repositories.TypeRepository;
+import dhbw.eiCompany.repositories.UsersRepository;
 
 @Configuration
 public class LoadDatabase {

@@ -1,13 +1,13 @@
 package dhbw.eiCompany.service;
 
-import dhbw.eiCompany.database.Person;
-import dhbw.eiCompany.interfaces.PersonService;
-import dhbw.eiCompany.repositories.UsersRepository;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import dhbw.eiCompany.model.Person;
+import dhbw.eiCompany.repositories.UsersRepository;
 
 @Service
 public class PersonServiceImp implements PersonService{
@@ -25,11 +25,18 @@ public class PersonServiceImp implements PersonService{
         return new ArrayList<>(usersRepository.findAll());
     }
 
-    public void saveOrUpdate(Person name){
-        usersRepository.save(name);
+    public Person saveOrUpdate(Person name){
+       return usersRepository.save(name);
     }
 
-    public void delete(Person name){
-        usersRepository.delete(name);
+    public void deleteById(Long id){
+        usersRepository.deleteById(id);
     }
+
+	@Override
+	public Person findById(Long id) {
+		return usersRepository.findById(id).get();
+	}
+    
+    
 }
