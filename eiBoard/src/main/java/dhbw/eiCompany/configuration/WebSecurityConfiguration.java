@@ -30,7 +30,10 @@ public class WebSecurityConfiguration extends KeycloakWebSecurityConfigurerAdapt
                 .antMatchers("/test").hasRole("user")
                 .antMatchers("/data").hasRole("user")
                 .antMatchers("/view").hasRole("Mitarbeiter")
-                .anyRequest().authenticated();
+                .antMatchers("/swagger").permitAll()
+                .antMatchers("/swagger-ui.html").permitAll()
+                
+                .anyRequest().permitAll();
     }
 
     @Autowired

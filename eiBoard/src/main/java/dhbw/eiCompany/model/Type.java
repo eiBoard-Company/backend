@@ -1,8 +1,10 @@
-package dhbw.eiCompany.database;
+package dhbw.eiCompany.model;
 
-import javax.persistence.*;
-import java.awt.*;
-import java.time.LocalDate;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity(name = "type")
 public class Type {

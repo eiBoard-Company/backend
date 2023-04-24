@@ -12,7 +12,7 @@ import dhbw.timetable.rapla.exceptions.NoConnectionException;
 
 @SpringBootApplication( scanBasePackages = "dhbw.eiCompany")
 @EnableJpaRepositories(basePackages = {"dhbw.eiCompany.repositories"})
-@EntityScan(basePackages = {"dhbw.eiCompany.database"})
+@EntityScan(basePackages = {"dhbw.eiCompany.model"})
 public class EiBoardApplication {
 	
 	
