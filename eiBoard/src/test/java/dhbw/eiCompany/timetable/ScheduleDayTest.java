@@ -23,7 +23,7 @@ class ScheduleDayTest {
             LocalDateTime.now(),
             LocalDateTime.now().plusDays(1),
             LocalDate.now()
-    );;
+    );
     Lecture lecture2 = new Lecture(
             "Mr.Eisenbiegler",
             "F419",
