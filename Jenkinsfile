@@ -20,8 +20,8 @@ pipeline {
             steps {
                 echo 'building the application'
                 dir('eiBoard-Company/Backend') {
-                    sh 'npm install'
-                    sh 'npm run build'
+                    //sh 'npm install'
+                    //sh 'npm run build'
                 }
             }
         }
