@@ -19,7 +19,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'building the application'
-                dir('app/frontend') {
+                dir('eiBoard-Company/Backend') {
                     sh 'npm install'
                     sh 'npm run build'
                 }
