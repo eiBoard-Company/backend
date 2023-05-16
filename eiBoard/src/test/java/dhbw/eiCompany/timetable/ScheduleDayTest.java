@@ -3,6 +3,7 @@ package dhbw.eiCompany.timetable;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.Assert;
 
 import java.lang.reflect.Array;
@@ -13,7 +14,7 @@ import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
-
+@SpringBootTest
 class ScheduleDayTest {
     ScheduleDay testDay = new ScheduleDay();
     Lecture lecture1 = new Lecture(
