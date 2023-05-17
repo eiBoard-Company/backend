@@ -161,7 +161,7 @@ class EntryServiceImpTest {
 
 
     @Test
-    @Order(5)
+    @Order(4)
     void getAllEntries() {
 
         List<Entry> allEntries = service.getAllEntries();
