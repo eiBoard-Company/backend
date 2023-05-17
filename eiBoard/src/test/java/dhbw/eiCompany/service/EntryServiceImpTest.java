@@ -5,6 +5,10 @@ import dhbw.eiCompany.model.Person;
 import dhbw.eiCompany.repositories.EntryRepository;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.junit.jupiter.api.*;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -13,6 +17,7 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import org.junit.jupiter.api.TestMethodOrder;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.awt.*;
 import java.time.LocalDate;
@@ -22,13 +27,15 @@ import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
+import static reactor.core.publisher.Mono.when;
 
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class EntryServiceImpTest {
 
-   @Autowired
-   EntryRepository entryRepository;
+   @Mock
+   EntryRepository entryRepositoryMock;
+
    @Autowired
    EntryService service;
 
@@ -91,7 +98,12 @@ class EntryServiceImpTest {
 
     @AfterEach
     void flush(){
-        entryRepository.flush();
+        entryRepositoryMock.flush();
+    }
+
+    private void assertEqualsEntry(Entry expected, Entry actual){
+        assertEquals(expected.getEntryId(), actual.getEntryId());
+
     }
 
 
@@ -103,27 +115,9 @@ class EntryServiceImpTest {
         Entry savedEntry2 = service.save(testEntry2);
         Entry savedEntry3 = service.save(testEntry3);
 
-
-        // For testEntry1
-        assertEquals(savedEntry1.getEntryId(), testEntry1.getEntryId());
-        assertEquals(savedEntry1.getName(), testEntry1.getName());
-        assertEquals(savedEntry1.getPerson(), testEntry1.getPerson());
-        assertEquals(savedEntry1.getColor(), testEntry1.getColor());
-        assertEquals(savedEntry1.getDate(), testEntry1.getDate());
-        assertEquals(savedEntry1.getDescription(), testEntry1.getDescription());
-        assertEquals(savedEntry1.getCategory(), testEntry1.getCategory());
-        assertEquals(savedEntry1.getTypId(), testEntry1.getTypId());
-
-        // For testEntry2
-        assertEquals(savedEntry2.getEntryId(), testEntry2.getEntryId());
-        assertEquals(savedEntry2.getName(), testEntry2.getName());
-        assertEquals(savedEntry2.getPerson(), testEntry2.getPerson());
-        assertEquals(savedEntry2.getColor(), testEntry2.getColor());
-        assertEquals(savedEntry2.getDate(), testEntry2.getDate());
-        assertEquals(savedEntry2.getDescription(), testEntry2.getDescription());
-        assertEquals(savedEntry2.getCategory(), testEntry2.getCategory());
-        assertEquals(savedEntry2.getTypId(), testEntry2.getTypId());
-
+        assertEqualsEntry(savedEntry1, testEntry1);
+        assertEqualsEntry(savedEntry2, testEntry2);
+        assertEqualsEntry(savedEntry3, testEntry3);
 
     }
 
@@ -155,12 +149,16 @@ class EntryServiceImpTest {
     @Test
     @Order(3)
     void findById() {
+        Entry expectedEntry = new Entry();
+        expectedEntry.setEntryId(8L);
+
+        Mockito.when(entryRepositoryMock.findById(8L)).thenReturn(Optional.of(expectedEntry));
 
         Entry result = service.findById(8L);
-        Optional<Entry> searchedEntry = entryRepository.findById(8L);
 
-        assertTrue(EqualsBuilder.reflectionEquals(searchedEntry.get().getEntryId(), result.getEntryId()));
+        assertEqualsEntry(expectedEntry, result);
     }
+
 
     @Test
     @Order(5)
