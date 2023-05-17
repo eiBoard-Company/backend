@@ -1,57 +1,12 @@
 pipeline {
     agent any
-
-    /*environment {
-        //Use Pipeline Utility Steps plugin to read information from pom.xml into env variables
-        IMAGE = readMavenPom().getArtifactId()
-        VERSION = readMavenPom().getVersion()
-    }*/
-
-    stages {
-        stage('Checkout') {
-            steps {
-                echo 'checking out the scm'
-                checkout scm
+    stages{
+        stage('Build'){
+            steps{
+                git 'https://github.com/eiBoard-Company/Backend.git'
+                sh './mvnw clean compile'
+                echo 'Build successfull'
             }
         }
-
-
-        stage('Build') {
-            steps {
-                echo 'building the application'
-                dir('eiBoard-Company/Backend') {
-                    //sh 'npm install'
-                    //sh 'npm run build'
-                }
-            }
-        }
-
-        stage('Test') {
-            when {
-                expression {
-                    env.BRANCH_NAME == 'develop'
-                }
-            }
-            steps {
-                echo 'testing the application'
-                //junit 'build/junit/*.xml'
-            }
-        }
-        
-        stage('Deploy') {
-            steps {
-                echo 'deploying the application'
-            }
-        }
-
-        //inform about Build Status or Build Status Changes 
-        /*post {
-            failure {
-                // notify users when the Pipeline fails
-                mail to: 'team@example.com',
-                        subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
-                        body: "Something is wrong with ${env.BUILD_URL}"
-            }
-        }*/
     }
 }
