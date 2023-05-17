@@ -1,8 +1,6 @@
 package dhbw.eiCompany.timetable;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.Assert;
 
@@ -15,6 +13,7 @@ import java.util.List;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class ScheduleDayTest {
     ScheduleDay testDay = new ScheduleDay();
     Lecture lecture1 = new Lecture(
@@ -41,11 +40,13 @@ class ScheduleDayTest {
     }
 
     @Test
+    @Order(1)
     void addLecture() {
         assertEquals(2, testDay.getLectureList().size());
     }
 
     @Test
+    @Order(2)
     void getLectureList() {
         List<Lecture> testLectureList1 = new ArrayList<Lecture>();
         testLectureList1.add(lecture1);
@@ -59,6 +60,7 @@ class ScheduleDayTest {
     }
 
     @Test
+    @Order(3)
     void clearAll() {
         testDay.clearAll();
 

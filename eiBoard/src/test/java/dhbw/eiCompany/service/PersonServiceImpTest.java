@@ -84,6 +84,7 @@ class PersonServiceImpTest {
     }
 
     @Test
+    @Order(3)
     void getAllUser() {
         assertInstanceOf(ArrayList.class, personService.getAllUser());
         assertEquals(6, personService.getAllUser().size());
@@ -91,6 +92,7 @@ class PersonServiceImpTest {
 
 
     @Test
+    @Order(4)
     void deleteById() {
         assertEquals(6, personService.getAllUser().size());
 
@@ -104,6 +106,7 @@ class PersonServiceImpTest {
     }
 
     @Test
+    @Order(5)
     void findById() {
         Person result = personService.findById(8L);
         Optional<Person> searchedPerson = usersRepository.findById(8L);
