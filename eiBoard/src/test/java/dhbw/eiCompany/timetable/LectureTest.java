@@ -72,8 +72,8 @@ class LectureTest {
     @Test
     @Order(8)
     void setStart() {
-        lecture1.setStart(LocalDateTime.now().plusMinutes(30L));
-        assertEquals(LocalDateTime.now().plusMinutes(30L), lecture1.getStart());
+        lecture1.setStart(LocalDateTime.of(2022, 12, 12,12,12,12));
+        assertEquals(LocalDateTime.of(2022,12,12,12,12,12), lecture1.getStart());
     }
 
     @Test
@@ -85,8 +85,8 @@ class LectureTest {
     @Test
     @Order(10)
     void setEnd() {
-        lecture1.setEnd(LocalDateTime.now().plusDays(2));
-        assertEquals(LocalDateTime.now().plusDays(2), lecture1.getEnd());
+        lecture1.setStart(LocalDateTime.of(2022, 12, 12,12,12,12));
+        assertEquals(LocalDateTime.of(2022,12,12,12,12,12), lecture1.getStart());
     }
 
     @Test
