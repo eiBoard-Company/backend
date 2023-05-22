@@ -4,8 +4,11 @@ pipeline{
     stages {
         stage('Build') {
             steps{
-                git 'https://github.com/eiBoard-Company/Backend.git'
-                sh ':/mvnw clean compile'
+                git url: 'https://github.com/eiBoard-Company/Backend'
+                withMaven {
+                    sh "mvn clean verify"
+                }
+                echo 'Builded backend'
             }
         }
     }
