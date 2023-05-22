@@ -6,7 +6,7 @@ pipeline{
             steps{
                 git url: 'https://github.com/eiBoard-Company/Backend', branch: 'develop'
                 withMaven {
-                    sh "mvn clean verify"
+                    sh "mvnw clean verify"
                 }
                 echo 'Builded backend'
             }
