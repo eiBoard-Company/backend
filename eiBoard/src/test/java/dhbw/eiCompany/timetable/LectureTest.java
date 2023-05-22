@@ -18,9 +18,9 @@ class LectureTest {
                 "testLecturer",
                 "testRoom",
                 "testLecture",
-                LocalDateTime.now(),
-                LocalDateTime.now().plusDays(1),
-                LocalDate.now()
+                LocalDateTime.of(2022,12,12,12,12,12),
+                LocalDateTime.of(2022,12,13,12,12,12),
+                LocalDate.of(2022,12,12)
         );
     }
 
@@ -66,7 +66,7 @@ class LectureTest {
     @Test
     @Order(7)
     void getStart() {
-        assertEquals(LocalDateTime.now(), lecture1.getStart());
+        assertEquals(LocalDateTime.of(2022,12,12,12,12,12), lecture1.getStart());
     }
 
     @Test
@@ -79,7 +79,7 @@ class LectureTest {
     @Test
     @Order(9)
     void getEnd() {
-        assertEquals(LocalDateTime.now().plusDays(1), lecture1.getEnd());
+        assertEquals(LocalDateTime.of(2022,12,13,12,12,12), lecture1.getEnd());
     }
 
     @Test
@@ -92,7 +92,7 @@ class LectureTest {
     @Test
     @Order(11)
     void getDate() {
-        assertEquals(LocalDate.now(), lecture1.getDate());
+        assertEquals(LocalDate.of(2022,12,12), lecture1.getDate());
     }
 
     @Test
