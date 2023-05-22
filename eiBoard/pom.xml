@@ -16,7 +16,7 @@
 	<description>eiBoard - a Dashboard for your needs</description>
     <packaging>jar</packaging>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>11</java.version>
 	</properties>
 
 	<dependencies>
@@ -191,6 +191,7 @@
 
 
 	<build>
+		<finalName>eiBoard</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -208,9 +209,17 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<configuration>
+							<mainClass>src/main/java/dhbw/eiCompany/EiBoardApplication.java</mainClass>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
+
 
 </project>
 		

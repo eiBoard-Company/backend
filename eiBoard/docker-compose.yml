@@ -21,7 +21,10 @@ services:
       - start-dev
 
   backend:
-    image: ei-board_save:latest
+    image: backend_img
+    build:
+      context: ./
+      dockerfile: Dockerfile
     ports:
       - 8090:8090
     restart: on-failure
