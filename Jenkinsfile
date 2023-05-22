@@ -4,7 +4,7 @@ pipeline{
     stages {
         stage('Build') {
             steps{
-                git url: 'https://github.com/eiBoard-Company/Backend'
+                git url: 'https://github.com/eiBoard-Company/Backend', branch: 'develop'
                 withMaven {
                     sh "mvn clean verify"
                 }
