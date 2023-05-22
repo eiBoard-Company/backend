@@ -5,8 +5,8 @@ pipeline{
         stage('Build') {
             steps{
                 git url: 'https://github.com/eiBoard-Company/Backend', branch: 'develop'
-                withMaven(maven: 'mvn') {
-                    sh "mvn clean verify"
+                withMaven() {
+                    sh "maven clean verify"
                 }
                 echo 'Builded backend'
             }
