@@ -10,7 +10,7 @@ pipeline{
         }
         stage('Compilation'){
             steps{
-                sh './mvnw clean install -DskipTests'
+                sh './mvn clean install -DskipTests'
             }
         }
     }
