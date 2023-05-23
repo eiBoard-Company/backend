@@ -23,7 +23,7 @@ pipeline{
         }
         stage('Testing'){
             steps{
-                sh 'mvn clean verify -DskipITs=true';junit='**/target/surefire-reports/TEST-*.xml'archive='target/*.jar'
+                sh 'mvn clean verify -DskipITs=true'
             }   
         }
     }
