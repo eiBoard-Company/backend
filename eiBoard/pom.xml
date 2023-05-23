@@ -166,14 +166,18 @@
         <artifactId>selenium-java</artifactId>
         <version>4.8.3</version>
     </dependency>
+		<dependency>
+			<groupId>org.apache.maven.surefire</groupId>
+			<artifactId>surefire</artifactId>
+			<version>3.1.0</version>
+			<type>pom</type>
+		</dependency>
     <dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-ui</artifactId>
 			<version>1.6.4</version>
 		</dependency>
 	</dependencies>
-
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -185,11 +189,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-
-
-
-
 	<build>
 		<finalName>eiBoard</finalName>
 		<plugins>
@@ -219,8 +218,6 @@
 			</plugin>
 		</plugins>
 	</build>
-
-
 </project>
 		
 		
