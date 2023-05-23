@@ -21,5 +21,17 @@ pipeline{
                 }
             }
         }
+        stage('Building'){
+            steps{
+                sh 'mvn clean package'
+                echo 'Builded'
+            }
+        }
+        stage('Testing'){
+            steps{
+                echo 'starting Unit tests'
+                sh 'mvn test'
+            }
+        }
     }
 }
