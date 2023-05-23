@@ -44,8 +44,10 @@ pipeline{
         }
         stage('Building Docker image'){
             steps{
-                script{
-                    docker.build("localhost:5003/backend:${TAG}")
+                dir('eiBoard'){
+                    script{
+                        docker.build("localhost:5003/backend:${TAG}")
+                        }
                 }
             }
         }
