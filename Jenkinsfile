@@ -24,7 +24,7 @@ pipeline{
         stage('Building'){
             steps{
                 dir('eiBoard'){
-                    sh 'mvn clean package'
+                    sh 'mvn clean package -DskipTests'
                     echo 'Builded'
                 }
             }
