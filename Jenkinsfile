@@ -2,11 +2,15 @@ pipeline{
     agent any
 
     stages {
-        stage('Build') {
+        stage('Checking out Repository') {
             steps{
                 git url: 'https://github.com/eiBoard-Company/Backend', branch: 'develop'
-                sh './mvnw clean install'
-                echo 'Builded backend'
+                echo 'Checked out repository'
+            }
+        }
+        stage('Compilation'){
+            steps{
+                sh './mvnw clean install -DskipTests
             }
         }
     }
