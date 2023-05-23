@@ -22,9 +22,6 @@ services:
 
   backend:
     image: backend_img
-    build:
-      context: ./
-      dockerfile: Dockerfile
     ports:
       - 8090:8090
     restart: on-failure
