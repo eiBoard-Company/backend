@@ -2,7 +2,7 @@ pipeline{
     agent any
 
     stages {
-        stage('Checking out Repository') {
+        stage('Check out Repository') {
             steps{
                 git url: 'https://github.com/eiBoard-Company/Backend', branch: 'develop'
                 echo 'Checked out repository'
@@ -37,10 +37,5 @@ pipeline{
                 }
             }
         }
-    }
-    post{
-        always {
-            junit 'target/surefire-reports/*.txt'
-         }
     }
 }
