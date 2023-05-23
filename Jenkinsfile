@@ -37,10 +37,12 @@ pipeline{
                 }
             }
         }
-        stage('Deploying'){
+                stage('Deploying'){
             steps{
                 dir('eiBoard'){
-                    docker.build("backend-image", "Dockerfile")   
+                    script{
+                        docker.build("backend-image", "Dockerfile")
+                    }   
                 }
             }
         }
