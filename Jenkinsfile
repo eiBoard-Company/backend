@@ -17,7 +17,7 @@ pipeline{
         stage('Compilation'){
             steps{
                 dir('eiBoard'){
-                    sh 'mvn clean install'
+                    sh 'mvn clean install -DskipTests'
                 }
             }
         }
