@@ -19,13 +19,6 @@ pipeline{
                 echo 'check maven version'
             }
         }
-        stage('Compilation'){
-            steps{
-                dir('eiBoard'){
-                    sh 'mvn clean install -DskipTests'
-                }
-            }
-        }
         stage('Building'){
             steps{
                 dir('eiBoard'){
