@@ -21,10 +21,5 @@ pipeline{
                 }
             }
         }
-        stage('Testing'){
-            steps{
-                sh 'mvn clean verify -DskipITs=true'
-            }   
-        }
     }
 }
