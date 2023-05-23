@@ -17,6 +17,8 @@ pipeline{
         stage('Compilation'){
             steps{
                 sh 'ls'
+                sh 'cd /eiBoard'
+                sh 'ls'
                 sh 'mvn clean install'
             }
         }
