@@ -8,9 +8,15 @@ pipeline{
                 echo 'Checked out repository'
             }
         }
-        stage('Compilation'){
+        stage('Check Maven Version'){
             steps{
-                sh 'mvn clean install -DskipTests'
+                sh 'mvn -version'
+                echo 'check maven version'
+            }
+        }
+        stage('Compilation'){
+            stpes{
+                sh 'mvn clean install'
             }
         }
     }
