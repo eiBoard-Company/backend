@@ -37,5 +37,12 @@ pipeline{
                 }
             }
         }
+        stage('Deploying'){
+            steps{
+                dir('eiBoard'){
+                    docker.build("backend-image", "Dockerfile")   
+                }
+            }
+        }
     }
 }
