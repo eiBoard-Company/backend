@@ -55,9 +55,14 @@ pipeline{
                 }
             }
         }
+        stage('Delete old image){
+            steps{
+                sh 'docker stop eicompany/backend'
+                sh 'docker rm -f eicompany/latest'
+            }      
+        }
         stage('Deploying'){
             steps{                
-                sh 'docker rm -f eicompany/backend:latest'
                 script{
                     docker.withRegistry('', registryCredential){
                         dockerImage.pull()   
