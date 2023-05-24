@@ -59,7 +59,7 @@ pipeline{
         stage('Deploying'){
             steps{
                 script{
-                    IMAGE_ID= sh 'sudo docker images --filter=reference=image_name --format "{{.ID}}"'
+                    IMAGE_ID= sh 'docker images --filter=reference=image_name --format "{{.ID}}"'
                 }
                 sh 'docker rmi ${IMAGE_ID}'
                 script{
