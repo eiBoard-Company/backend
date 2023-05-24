@@ -58,7 +58,9 @@ pipeline{
         stage('Deploying'){
             steps{                
                 sh 'docker rm -f eicompany/backend:latest'
-                sh 'docker pull eicompany/backend:latest'
+                docker.withRegistry('', registryCredential){
+                    docker.pull latest
+                }
             }
         }
     }
