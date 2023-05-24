@@ -59,7 +59,7 @@ pipeline{
         stage('Deploying'){
             steps{
                 script{
-                    def imageId = sh(return Stdout: true, script:'docker images --filter=reference=eicompany/backend --quiet').trim()
+                    def imageId = sh(returnStdout: true, script:'docker images --filter=reference=eicompany/backend --quiet').trim()
                     env.IMAGE_ID = result
                 }
                 sh 'docker rmi ${env.IMAGE_ID}'
