@@ -59,10 +59,9 @@ pipeline{
         stage('Deploying'){
             steps{
                 script{
-                    def imageId = sh(returnStdout: true, script:'docker images --filter=reference=eicompany/backend --quiet').trim()
-                    env.IMAGE_ID = result
+                    IMAGE_ID=$(sudo docker images --filter=reference=image_name --format "{{.ID}}")
                 }
-                sh 'docker rmi ${env.IMAGE_ID}'
+                sh 'docker rmi ${IMAGE_ID}'
                 script{
                     docker.withRegistry('', registryCredential){
                         dockerImage.pull()   
