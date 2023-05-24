@@ -1,4 +1,3 @@
-def imageId
 pipeline{
     agent any
 
@@ -60,9 +59,10 @@ pipeline{
         stage('Deploying'){
             steps{
                 script{
-                    imageId = sh 'docker images --filter="reference=eicompany/backend" --quiet'
+                    def imageId = sh(return Stdout: true, script:'docker images --filter=reference=eicompany/backend --quiet').trim()
+                    env.IMAGE_ID = result
                 }
-                sh 'docker rmi ${imageId}'
+                sh 'docker rmi ${env.IMAGE_ID}'
                 script{
                     docker.withRegistry('', registryCredential){
                         dockerImage.pull()   
