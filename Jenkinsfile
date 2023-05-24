@@ -39,6 +39,9 @@ pipeline{
             steps{
                 dir('eiBoard'){
                     script{
+                        sh 'sudo groupadd docker'
+                        sh 'sudo usermod -aG docker ${USER}'
+                        sh 'su -s ${USER}'
                         docker.build("localhost:5003/backend:${TAG}")
                         }
                 }
