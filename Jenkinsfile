@@ -58,8 +58,8 @@ pipeline{
         }
         stage('Deploying'){
             steps{
-                sh "docker stop backend:${DATE}.${BUILD_NUMBER - 1} | true"
-                sh "docker rm backend:${DATE}.${BUILD_NUMBER - 1} | true"
+                sh "docker stop backend:23.5.10 | true"
+                sh "docker rm backend:23.5.10 | true"
                 sh "docker run --name backend -d -p 8090:8090 localhost:5003/backend:${TAG}"
             }
         }
