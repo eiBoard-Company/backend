@@ -42,7 +42,7 @@ pipeline{
             steps{
                 dir('eiBoard'){
                     script{
-                        dockerImage = docker.build registry + ':' + TAG
+                        dockerImage = docker.build registry
                         }
                 }
             }
@@ -58,9 +58,9 @@ pipeline{
         }
         stage('Deploying'){
             steps{
-                sh "docker stop backend:23.5.10 | true"
-                sh "docker rm backend:23.5.10 | true"
-                sh "docker run --name backend -d -p 8090:8090 localhost:5003/backend:${TAG}"
+                sh "docker stop backend | true"
+                sh "docker rm backend | true"
+                sh "docker run --name backend -d -p 8090:8090 localhost:5003/backend"
             }
         }
     }
