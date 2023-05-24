@@ -59,7 +59,7 @@ pipeline{
         stage('Deploying'){
             steps{
                 
-                sh 'docker rm -f backend:latest'
+                sh 'docker rm -f eicompany/backend:latest'
                 sh "docker run --name backend -d -p 8090:8090 localhost:5003/backend"
             }
         }
