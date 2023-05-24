@@ -55,7 +55,7 @@ pipeline{
                 }
             }
         }
-        stage('Delete old image){
+        stage('Delete old image'){
             steps{
                 sh 'docker stop eicompany/backend'
                 sh 'docker rm -f eicompany/latest'
