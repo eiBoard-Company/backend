@@ -57,8 +57,8 @@ pipeline{
         }
         stage('Deploying'){
             steps{
-                sh 'docker stop eicompany/backend'
-                sh 'docker rm -f eicompany/latest'
+                sh 'docker stop eicompany/backend:latest'
+                sh 'docker rm -f eicompany/backend:latest'
                 script{
                     docker.withRegistry('', registryCredential){
                         dockerImage.pull()   
