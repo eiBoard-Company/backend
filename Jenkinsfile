@@ -6,7 +6,6 @@ pipeline{
         TAG = "${DATE}.${BUILD_NUMBER}"
         registry = 'eicompany/backend'
         registryCredential = 'dockerhub'
-        imageId = ''
     }
 
     stages {
@@ -58,7 +57,7 @@ pipeline{
         }
         stage('Deploying'){
             steps{
-                imageId = sh 'docker images --filter="reference=eicompany/backend" --quiet'
+                def imageId = sh 'docker images --filter="reference=eicompany/backend" --quiet'
                 sh 'docker rmi ${imageId}'
                 script{
                     docker.withRegistry('', registryCredential){
