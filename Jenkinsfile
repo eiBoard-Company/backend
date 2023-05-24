@@ -1,3 +1,4 @@
+def imageId
 pipeline{
     agent any
 
@@ -6,6 +7,7 @@ pipeline{
         TAG = "${DATE}.${BUILD_NUMBER}"
         registry = 'eicompany/backend'
         registryCredential = 'dockerhub'
+        
     }
 
     stages {
@@ -58,9 +60,9 @@ pipeline{
         stage('Deploying'){
             steps{
                 script{
-                    def imageId = 'docker images --filter="reference=eicompany/backend" --quiet'
+                    imageId = 'docker images --filter="reference=eicompany/backend" --quiet'
                 }
-                sh 'docker rmi ${imageId}'
+                sh 'docker rmi ' + imageId
                 script{
                     docker.withRegistry('', registryCredential){
                         dockerImage.pull()   
