@@ -61,7 +61,7 @@ pipeline{
                 script{
                     IMAGE_ID= sh 'docker images --filter=reference=eicompany/backend --format "{{.ID}}"'
                 }
-                sh 'docker rmi "${IMAGE_ID}"'
+                sh 'docker rmi ' + IMAGE_ID
                 script{
                     docker.withRegistry('', registryCredential){
                         dockerImage.pull()   
