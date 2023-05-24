@@ -58,10 +58,10 @@ pipeline{
         }
         stage('Deploying'){
             steps{
-                sh "docker stop backend:latest | true"
+                sh "docker stop backend | true"
                 timeout(time:20, unit: 'SECONDS')
                         
-                sh "docker rm backend:latest | true"
+                sh "docker rm backend | true"
                 timeout(time:20, unit: 'SECONDS')
                         
                 sh "docker run --name backend -d -p 8090:8090 localhost:5003/backend"
