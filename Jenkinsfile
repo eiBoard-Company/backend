@@ -4,7 +4,7 @@ pipeline{
     environment{
         DATE = new Date().format('yy.M')
         TAG = "${DATE}.${BUILD_NUMBER}"
-        registry = 'https://hub.docker.com/repository/docker/eicompany/backend/general'
+        registry = 'eicompany/backend'
         registryCredential = 'dockerHub'
         dockerIMage = ''
     }
@@ -42,7 +42,7 @@ pipeline{
             steps{
                 dir('eiBoard'){
                     script{
-                        dockerImage = docker.build("registry}")
+                        dockerImage = docker.build registry
                         }
                 }
             }
