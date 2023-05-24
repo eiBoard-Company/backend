@@ -4,6 +4,9 @@ pipeline{
     environment{
         DATE = new Date().format('yy.M')
         TAG = "${DATE}.${BUILD_NUMBER}"
+        registry = 'https://hub.docker.com/repository/docker/eicompany/backend/general'
+        registryCredential = 'dockerHub'
+        dockerIMage = ''
     }
 
     stages {
@@ -39,7 +42,7 @@ pipeline{
             steps{
                 dir('eiBoard'){
                     script{
-                        docker.build("localhost:5003/backend:${TAG}")
+                        dockerImage = docker.build("registry}")
                         }
                 }
             }
@@ -47,9 +50,8 @@ pipeline{
         stage('Pushing Image to registry'){
             steps{
                 script{
-                    docker.withRegistry('localhost:5003'){
-                        docker.image("localhost:5003/backend:${TAG}").push()
-                        docker.image("localhost:5003/backend:${TAG}").push("latest")
+                    docker.withRegistry('', registryCredential){
+                        dockerImage.push()
                     }
                 }
             }
