@@ -58,9 +58,7 @@ pipeline{
         }
         stage('Deploying'){
             steps{
-                script{
-                    imageId = docker images --filter="reference=eicompany/backend" --quiet
-                }
+                def imageId = sh 'docker images --filter="reference=eicompany/backend" --quiet'
                 sh 'docker rmi ${imageId}'
                 script{
                     docker.withRegistry('', registryCredential){
