@@ -5,10 +5,8 @@ pipeline{
         DATE = new Date().format('yy.M')
         TAG = "${DATE}.${BUILD_NUMBER}"
         registry = 'eicompany/backend'
-        dockerUser = 'dockerUser'
-        dockerPW = 'dockerPW'
         registryCredential = 'dockerhub'
-        dockerIMage = ''
+        dockerImage = ''
     }
 
     stages {
@@ -59,9 +57,7 @@ pipeline{
             }
         }
         stage('Deploying'){
-            steps{
-                sh 'docker login -u $registryCredential_USER --password=$registryCredential_PASSWORD'
-                
+            steps{                
                 sh 'docker rm -f eicompany/backend:latest'
                 sh 'docker pull eicompany/backend:latest'
             }
