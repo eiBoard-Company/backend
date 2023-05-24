@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import dhbw.eiCompany.model.Event;
 import dhbw.eiCompany.model.Person;
+import dhbw.eiCompany.model.Task;
 import dhbw.eiCompany.service.PersonService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -26,6 +28,7 @@ public class UserController {
 
     @Autowired
     PersonService personService;
+    
     @Tag(name = "User")
 	@Operation(summary = "Get a User", description = "Get a specific user by his ID")
 	@ApiResponses(value = {
@@ -41,6 +44,38 @@ public class UserController {
     	}
     	
         return new ResponseEntity<>(personService.findById(id), HttpStatus.OK);
+    }
+  
+    @Tag(name = "User")
+ 	@Operation(summary = "Get all Tasks of a User", description = "List all existing tasks of a user")
+ 	@ApiResponses(value = {
+ 			@ApiResponse(responseCode = "200", description = "Returns tasks successfully", content = @Content(schema = @Schema(implementation = Task.class))),
+ 			@ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content()),
+ 			@ApiResponse(responseCode = "403", description = "Unauthorized", content = @Content()),
+ 			@ApiResponse(responseCode = "404", description = "No User found by ID")})
+     @GetMapping(path = "/user/{id}/tasks")
+    public ResponseEntity<List<Task>> getTasksFromUser(@PathVariable Long id) {
+    	Person p = personService.findById(id);
+    	if(p == null) {
+    		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    	}
+    	return new ResponseEntity<>(p.getTasks(), HttpStatus.OK);
+    }
+    
+    @Tag(name = "User")
+  	@Operation(summary = "Get all Events of a User", description = "List all existing Events of a user")
+  	@ApiResponses(value = {
+  			@ApiResponse(responseCode = "200", description = "Returns Events successfully", content = @Content(schema = @Schema(implementation = Event.class))),
+  			@ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content()),
+  			@ApiResponse(responseCode = "403", description = "Unauthorized", content = @Content()),
+  			@ApiResponse(responseCode = "404", description = "No User found by ID")})
+      @GetMapping(path = "/user/{id}/events")
+    public ResponseEntity<List<Event>> getEventsFromUser(@PathVariable Long id) {
+    	Person p = personService.findById(id);
+    	if(p == null) {
+    		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    	}
+    	return new ResponseEntity<>(p.getEvents(), HttpStatus.OK);
     }
 
     @Tag(name = "User")

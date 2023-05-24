@@ -32,7 +32,6 @@ public class Person {
 
     @Column
     @Email
-    
     private String email;
     
     @Column
@@ -40,7 +39,7 @@ public class Person {
     private Blob picture;
     
     @Column
-    private String raplaLink
+    private String raplaLink;
     
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "person", orphanRemoval = true)
     private List<Task> tasks = new ArrayList<>();
@@ -52,7 +51,8 @@ public class Person {
 
     }
 
-    public Person(Long userId, String lastName, String firstName, String password, String email, Blob picture) {
+    public Person(Long userId, String lastName, String firstName, String password, String email, Blob picture, String raplaLink) {
+    	this.raplaLink = raplaLink;
         this.userId = userId;
         this.email = email;
         this.picture = picture;
@@ -62,6 +62,16 @@ public class Person {
 
 	public Long getUserId() {
 		return userId;
+	}
+	
+	
+
+	public String getRaplaLink() {
+		return raplaLink;
+	}
+
+	public void setRaplaLink(String raplaLink) {
+		this.raplaLink = raplaLink;
 	}
 
 	public void setUserId(Long userId) {
