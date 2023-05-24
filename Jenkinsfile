@@ -5,7 +5,7 @@ pipeline{
         DATE = new Date().format('yy.M')
         TAG = "${DATE}.${BUILD_NUMBER}"
         registry = 'eicompany/backend'
-        registryCredential = 'dockerHub'
+        registryCredential = 'dockerhub'
         dockerIMage = ''
     }
 
