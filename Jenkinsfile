@@ -6,7 +6,6 @@ pipeline{
         TAG = "${DATE}.${BUILD_NUMBER}"
         registry = 'eicompany/backend'
         registryCredential = 'dockerhub'
-        dockerImage = ''
     }
 
     stages {
