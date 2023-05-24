@@ -4,6 +4,8 @@ pipeline{
     environment{
         DATE = new Date().format('yy.M')
         TAG = "${DATE}.${BUILD_NUMBER}"
+        registry = 'eicompany/backend'
+        registryCredential = 'dockerhub'
     }
 
     stages {
@@ -17,13 +19,6 @@ pipeline{
             steps{
                 sh 'mvn -version'
                 echo 'check maven version'
-            }
-        }
-        stage('Compilation'){
-            steps{
-                dir('eiBoard'){
-                    sh 'mvn clean install -DskipTests'
-                }
             }
         }
         stage('Building'){
@@ -46,7 +41,7 @@ pipeline{
             steps{
                 dir('eiBoard'){
                     script{
-                        docker.build("localhost:5003/backend:${TAG}")
+                        dockerImage = docker.build registry
                         }
                 }
             }
@@ -54,18 +49,16 @@ pipeline{
         stage('Pushing Image to registry'){
             steps{
                 script{
-                    docker.withRegistry('localhost:5003'){
-                        docker.image("localhost:5003/backend:${TAG}").push()
-                        docker.image("localhost:5003/backend:${TAG}").push("latest")
+                    docker.withRegistry('', registryCredential){
+                        dockerImage.push()
                     }
                 }
             }
         }
         stage('Deploying'){
-            steps{
-                sh "docker stop backend | true"
-                sh "docker rm backend | true"
-                sh "docker run --name backend -d -p 8090:8090 localhost:5003/backend:${TAG}"
+            steps{                
+                sh 'docker rm -f eicompany/backend:latest'
+                sh 'docker pull eicompany/backend:latest'
             }
         }
     }
