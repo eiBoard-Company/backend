@@ -63,6 +63,7 @@ pipeline{
                     sh 'docker rmi ' + IMAGE_ID
                     docker.withRegistry('', registryCredential){
                         dockerImage.pull()
+                    }
                 }
             }
         }
