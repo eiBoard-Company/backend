@@ -58,6 +58,7 @@ pipeline{
         }
         stage('Deploying'){
             steps{
+                sh 'docker login -u registryCredential'
                 
                 sh 'docker rm -f eicompany/backend:latest'
                 sh 'docker pull eicompany/backend:latest'
