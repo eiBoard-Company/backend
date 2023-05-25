@@ -61,6 +61,7 @@ pipeline{
                 script{
                     def IMAGE_ID = sh(script: 'docker images --filter=reference=eicompany/backend --format "{{.ID}}"', returnStdout: true).trim()
                     sh "docker rmi ${IMAGE_ID}"
+                    timeout(time: 20, unit: 'SECONDS')
                     docker.withRegistry('', registryCredential){
                         dockerImage.pull()
                     }
