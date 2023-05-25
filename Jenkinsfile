@@ -61,6 +61,7 @@ pipeline{
                 script{
                     def IMAGE_ID = sh(script: 'docker images --filter=reference=eicompany/backend --format "{{.ID}}"', returnStdout: true).trim()
                     sh "docker image rm ${IMAGE_ID}"
+                    IMAGE_ID = ''
                     }
                 }
             }
