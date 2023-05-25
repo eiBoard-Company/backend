@@ -59,9 +59,9 @@ pipeline{
         stage('Delete old image'){
             steps{
                 script{
-                    def IMAGE_ID = sh(script: 'docker images --filter=reference=eicompany/backend --format "{{.ID}}"', returnStdout: true).trim()
+                    def IMAGE_ID = ''
+                    IMAGE_ID = sh(script: 'docker images --filter=reference=eicompany/backend --format "{{.ID}}"', returnStdout: true).trim()
                     sh "docker image rm ${IMAGE_ID}"
-                    IMAGE_ID = ''
                     }
                 }
             }
