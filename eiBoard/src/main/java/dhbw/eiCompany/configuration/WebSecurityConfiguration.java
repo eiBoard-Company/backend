@@ -9,41 +9,37 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.authority.mapping.SimpleAuthorityMapper;
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.web.authentication.session.RegisterSessionAuthenticationStrategy;
 import org.springframework.security.web.authentication.session.SessionAuthenticationStrategy;
-
+@EnableGlobalMethodSecurity(jsr250Enabled = true)
 @Configuration
 @KeycloakConfiguration
 public class WebSecurityConfiguration extends KeycloakWebSecurityConfigurerAdapter {
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		super.configure(http);
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        super.configure(http);
+		http.cors().disable();
+		http.authorizeRequests().antMatchers("/v3/api-docs/**").permitAll();
+		http.authorizeRequests().antMatchers("/swagger-ui/**").authenticated();
+		http.authorizeRequests().antMatchers("/h2-console/**").permitAll();
+		http.authorizeRequests().anyRequest().authenticated();
+		http.csrf().disable();
+		http.headers().frameOptions().sameOrigin();
+	}
 
-        http
-                .csrf().disable()
-                .authorizeRequests()
-                // .antMatchers("/test*").hasRole("user")
-                .antMatchers("/test").hasRole("user")
-                .antMatchers("/data").hasRole("user")
-                .antMatchers("/view").hasRole("Mitarbeiter")
-                .antMatchers("/swagger").permitAll()
-                .antMatchers("/swagger-ui.html").permitAll()
-                
-                .anyRequest().permitAll();
-    }
+	@Autowired
+	public void configureGlobal(final AuthenticationManagerBuilder auth) {
+		KeycloakAuthenticationProvider keycloakAuthenticationProvider = keycloakAuthenticationProvider();
+		keycloakAuthenticationProvider.setGrantedAuthoritiesMapper(new SimpleAuthorityMapper());
+		auth.authenticationProvider(keycloakAuthenticationProvider);
+	}
 
-    @Autowired
-    public void configureGlobal(final AuthenticationManagerBuilder auth) {
-        KeycloakAuthenticationProvider keycloakAuthenticationProvider = keycloakAuthenticationProvider();
-        keycloakAuthenticationProvider.setGrantedAuthoritiesMapper(new SimpleAuthorityMapper());
-        auth.authenticationProvider(keycloakAuthenticationProvider);
-    }
-
-    // if setEnabled = true the AuthorizationContext, which is needed in the Controllers, is null
+	// if setEnabled = true the AuthorizationContext, which is needed in the Controllers, is null
     @Bean
     public FilterRegistrationBean keycloakAuthenticationProcessingFilterRegistrationBean(
             KeycloakAuthenticationProcessingFilter filter) {
@@ -52,10 +48,10 @@ public class WebSecurityConfiguration extends KeycloakWebSecurityConfigurerAdapt
         return registrationBean;
     }
 
-    @Bean
-    @Override
-    protected SessionAuthenticationStrategy sessionAuthenticationStrategy() {
-        return new RegisterSessionAuthenticationStrategy(new SessionRegistryImpl());
-    }
+	@Bean
+	@Override
+	protected SessionAuthenticationStrategy sessionAuthenticationStrategy() {
+		return new RegisterSessionAuthenticationStrategy(new SessionRegistryImpl());
+	}
 
 }

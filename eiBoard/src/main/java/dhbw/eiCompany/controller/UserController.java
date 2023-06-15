@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -56,6 +57,7 @@ public class UserController {
     LectureService lectureService;
     
     @Tag(name = "User")
+    @PreAuthorize("hasRole('ROLE_USER')")
 	@Operation(summary = "Get a User", description = "Get a specific user by his ID")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Returns user", content = @Content(schema = @Schema(implementation = PersonDTO.class))),
@@ -73,6 +75,7 @@ public class UserController {
     }
   
     @Tag(name = "User")
+    @PreAuthorize("hasRole('ROLE_USER')")
  	@Operation(summary = "Get all Tasks of a User", description = "List all existing tasks of a user")
  	@ApiResponses(value = {
  			@ApiResponse(responseCode = "200", description = "Returns tasks successfully", content = @Content(schema = @Schema(implementation = TaskDTO.class))),
@@ -93,6 +96,7 @@ public class UserController {
     }
     
     @Tag(name = "User")
+    @PreAuthorize("hasRole('ROLE_USER')")
   	@Operation(summary = "Get all Events of a User", description = "List all existing Events of a user")
   	@ApiResponses(value = {
   			@ApiResponse(responseCode = "200", description = "Returns Events successfully", content = @Content(schema = @Schema(implementation = EventDTO.class))),
@@ -113,6 +117,7 @@ public class UserController {
     }
 
     @Tag(name = "User")
+    @PreAuthorize("hasRole('ROLE_USER')")
 	@Operation(summary = "List all users", description = "List all existing users")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Returns users successfully", content = @Content(schema = @Schema(implementation = PersonDTO.class))),
@@ -129,6 +134,7 @@ public class UserController {
     }
 
     @Tag(name = "User")
+    @PreAuthorize("hasRole('ROLE_USER')")
 	@Operation(summary = "Delete a User", description = "Delete a specific user by his ID")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Return deleted User", content = @Content(schema = @Schema(implementation = PersonDTO.class))),
@@ -164,6 +170,7 @@ public class UserController {
     }
     
     @Tag(name = "User")
+    @PreAuthorize("hasRole('ROLE_USER')")
 	@Operation(summary = "Update an existing User", description = "Update  an existing User with data")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Returns created user", content = @Content(schema = @Schema(implementation = PersonDTO.class))),
@@ -186,6 +193,7 @@ public class UserController {
     }
     
     @Tag(name = "User")
+    @PreAuthorize("hasRole('ROLE_USER')")
 	@Operation(summary = "Update all Categories", description = "Update all Categories of an existing User")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "202", description = "Update Successfull", content = @Content(schema = @Schema(implementation = Boolean.class))),

@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,6 +40,7 @@ public class TaskController {
 	TaskMapper taskMapper;
 	
     @Tag(name = "Task")
+    @PreAuthorize("hasRole('ROLE_USER')")
 	@Operation(summary = "Get a Task", description = "Get a specific task by its ID")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Returns task", content = @Content(schema = @Schema(implementation = TaskDTO.class))),
@@ -56,6 +58,7 @@ public class TaskController {
     }
     
     @Tag(name = "Task")
+    @PreAuthorize("hasRole('ROLE_USER')")
    	@Operation(summary = "Get all Tasks", description = "Get all existing tasks")
    	@ApiResponses(value = {
    			@ApiResponse(responseCode = "200", description = "Returns tasks", content = @Content(schema = @Schema(implementation = TaskDTO.class))),
@@ -76,6 +79,7 @@ public class TaskController {
        }
     
     @Tag(name = "Task")
+    @PreAuthorize("hasRole('ROLE_USER')")
    	@Operation(summary = "create a Task", description = "create a task with given task infos")
    	@ApiResponses(value = {
    			@ApiResponse(responseCode = "201", description = "task successfully created", content = @Content(schema = @Schema(implementation = TaskDTO.class))),
@@ -101,6 +105,7 @@ public class TaskController {
        }
     
     @Tag(name = "Task")
+    @PreAuthorize("hasRole('ROLE_USER')")
    	@Operation(summary = "update a Task", description = "Update an existing task with given task infos")
    	@ApiResponses(value = {
    			@ApiResponse(responseCode = "406", description = "TaskDTO has no ID, can't update (maybe try creating one?)", content = @Content()),
@@ -132,6 +137,7 @@ public class TaskController {
        }
     
     @Tag(name = "Task")
+    @PreAuthorize("hasRole('ROLE_USER')")
     @Operation(summary = "Check for due Updates", description = "Updates the due Status if needed")
     @ApiResponses(value = {
     		@ApiResponse(responseCode="")

@@ -2,12 +2,10 @@ package dhbw.eiCompany.mapper;
 
 import java.sql.Blob;
 
-import org.mapstruct.Mapper;
 import org.springframework.stereotype.Component;
 
 import dhbw.eiCompany.BlobConverter;
 
-@Mapper(componentModel = "spring")
 @Component
 public class BlobMapper {
 

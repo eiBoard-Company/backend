@@ -7,12 +7,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.http.HttpStatus;
 
 import dhbw.timetable.rapla.exceptions.NoConnectionException;
 
 @SpringBootApplication( scanBasePackages = "dhbw.eiCompany")
 @EnableJpaRepositories(basePackages = {"dhbw.eiCompany.repositories"})
 @EntityScan(basePackages = {"dhbw.eiCompany.model"})
+
 public class EiBoardApplication {
 	
 	
