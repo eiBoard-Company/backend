@@ -1,7 +1,53 @@
-version: "1.0"
+version: '1'
 services:
-  web:
-    build: .
+  db:
+    image: mysql
     ports:
-      - 4040:8090
-    image: eiboard/backend:latest
+      - 3306:3306
+      - 33060:33060
+    restart: on-failure
+    environment:
+      - MYSQL_ROOT_PASSWORD=DHBWEIBOARD
+      
+  keycloak:
+    image: quay.io/keycloak/keycloak:19.0.1
+    restart: on-failure
+    ports:
+      - 8089:8080
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+    command:
+      - start-dev
+
+  backend:
+    image: backend_img
+    build:
+      context: *
+      dockerfile: Dockerfile
+    ports:
+      - 8090:8090
+    restart: on-failure
+    depends_on:
+      - keycloak
+      - db
+  frontend:
+    image: frontend:1
+    ports:
+      - 80:80
+    restart: on-failure
+    depends_on:
+      - backend
+      - db
+  jenkins:
+    image: jenkins/jenkins:lts-jdk11
+    ports:
+      - 8082:8080
+    restart: on-failure
+
+  portainer:
+    image: portainer/portainer-ce:latest
+    ports:
+      - 8000:8000
+      - 9443:9443
+    restart: on-failure

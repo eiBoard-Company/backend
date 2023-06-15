@@ -1,5 +1,5 @@
-FROM eclipse-temurin:19
+FROM amazoncorretto:17-alpine-jdk
 MAINTAINER eiBoard.com
-WORKDIR C:/git/eiBoard/eiBoard
-ADD /target/eiBoard-2.7.1.jar eiBoard-2.7.1.jar
-CMD ["java", "-jar", "eiBoard-2.7.1.jar"]
+EXPOSE 8090
+COPY target/eiBoard.jar eiboard.jar
+ENTRYPOINT ["java", "-jar","/eiboard.jar"]

@@ -10,4 +10,5 @@ import dhbw.eiCompany.model.Person;
 public interface UsersRepository extends JpaRepository<Person, Long> {
 
   Person findByUserId(Long userID);
+
 }
