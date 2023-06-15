@@ -1,6 +1,7 @@
 package dhbw.eiCompany.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,10 +25,9 @@ public class Task {
 	private String titel;
 	@Column
 	private String description;
+
 	@Column
-	private LocalDate date;
-	@Column
-	private LocalDate endDate;
+	private LocalDateTime endDate;
 	@Column
 	private String status;
 	@Column
@@ -43,12 +43,11 @@ public class Task {
 	}
 	
 
-	public Task(String titel, String description, LocalDate date, LocalDate endDate, String status, int progress,
+	public Task(String titel, String description, LocalDateTime endDate, String status, int progress,
 			String category) {
 		super();
 		this.titel = titel;
 		this.description = description;
-		this.date = date;
 		this.endDate = endDate;
 		this.status = status;
 		this.progress = progress;
@@ -119,17 +118,11 @@ public class Task {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public LocalDate getDate() {
-		return date;
-	}
-	public void setDate(LocalDate date) {
-		this.date = date;
-	}
 
-	public LocalDate getEndDate() {
+	public LocalDateTime getEndDate() {
 		return endDate;
 	}
-	public void setEndDate(LocalDate endDate) {
+	public void setEndDate(LocalDateTime endDate) {
 		this.endDate = endDate;
 	}
 

@@ -17,11 +17,6 @@ public class PersonService {
     @Autowired
     UsersRepository usersRepository;
 
-    
-    public Person findByName(String name) {
-        return usersRepository.findByName(name);
-    }
-
     public List<Person> getAllUser(){
 
         return new ArrayList<>(usersRepository.findAll());

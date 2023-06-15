@@ -21,9 +21,8 @@ import dhbw.timetable.rapla.parser.DataImporter;
 @Service
 public class LectureService {
 
-	private String url = "https://rapla.dhbw-karlsruhe.de/rapla?page=calendar&user=eisenbiegler&file=TINF21B4";
+	public String url = "https://rapla.dhbw-karlsruhe.de/rapla?page=calendar&user=eisenbiegler&file=TINF21B4";
 	
-
 	 public ScheduleDay getDay(LocalDate date) {
 		 ScheduleDay day = new ScheduleDay();
 	    	

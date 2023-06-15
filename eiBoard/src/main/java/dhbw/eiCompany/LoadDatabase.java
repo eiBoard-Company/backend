@@ -1,5 +1,7 @@
 package dhbw.eiCompany;
 
+import java.io.File;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -11,18 +13,13 @@ import dhbw.eiCompany.repositories.UsersRepository;
 @Configuration
 public class LoadDatabase {
 
-    @Autowired
-    UsersRepository usersRepository;
-
-    @Autowired
-    TypeRepository typeRepository;
 
 
 
     @Bean
 	public CommandLineRunner initDatabase() {
 		return args -> {
-
+ System.out.println(BlobConverter.convertFileToBase64String(new File("C:\\Users\\mstaar\\Desktop\\examplePicture.png")).toString());
 //        Person julian = new Person();
 //        julian.setName("Julian Stadler");
 //        julian.setEmail("julian@stadler-privat.de");

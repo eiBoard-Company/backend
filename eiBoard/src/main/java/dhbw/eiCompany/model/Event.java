@@ -1,6 +1,7 @@
 package dhbw.eiCompany.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,22 +16,18 @@ import javax.persistence.Table;
 @Table(name = "Event")
 public class Event {
 	
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
 	private Long id;
-	
 	@Column
 	private String titel;
 	@Column
 	private String description;
 	@Column
-	private LocalDate date;
+	private LocalDateTime startDate;
 	@Column
-	private LocalDate startDate;
-	@Column
-	private LocalDate endDate;
+	private LocalDateTime endDate;
 	@Column
 	private String location;
 	@Column
@@ -46,12 +43,11 @@ public class Event {
 	}
 	
 	
-	public Event(String titel, String description, LocalDate date, LocalDate startDate, LocalDate endDate,
+	public Event(String titel, String description, LocalDateTime startDate, LocalDateTime endDate,
 			String location, int progress, String category) {
 		super();
 		this.titel = titel;
 		this.description = description;
-		this.date = date;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.location = location;
@@ -113,22 +109,17 @@ public class Event {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public LocalDate getDate() {
-		return date;
-	}
-	public void setDate(LocalDate date) {
-		this.date = date;
-	}
-	public LocalDate getStartDate() {
+
+	public LocalDateTime getStartDate() {
 		return startDate;
 	}
-	public void setStartDate(LocalDate startDate) {
+	public void setStartDate(LocalDateTime startDate) {
 		this.startDate = startDate;
 	}
-	public LocalDate getEndDate() {
+	public LocalDateTime getEndDate() {
 		return endDate;
 	}
-	public void setEndDate(LocalDate endDate) {
+	public void setEndDate(LocalDateTime endDate) {
 		this.endDate = endDate;
 	}
 	public String getLocation() {
@@ -137,6 +128,11 @@ public class Event {
 	public void setLocation(String location) {
 		this.location = location;
 	}
+
+
+
+
+
 	
 	
 }
