@@ -2,6 +2,7 @@
 eiBoard/.settings
 eiBoard/bin
 eiBoard/target
+!eiBoard/target/eiBoard.jar
 eiBoard/.classpath
 .class
 eiboard/.project
