@@ -16,7 +16,7 @@ import io.swagger.v3.oas.models.security.SecurityScheme;
 public class SwaggerConfig {
 
 	//ADD KEYCLOAK TOKEN
-	private final static String TOKENURL = "http://localhost:8081/realms/SpringBootKeycloak/protocol/openid-connect/token";
+	private final static String TOKENURL = "http://localhost:8081/realms/eiBoardKeycloak/protocol/openid-connect/token";
 
 	@Bean
 	public OpenAPI springShopOpenAPI() {

@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,6 +41,7 @@ public class EventController {
 	
     @Tag(name = "Event")
 	@Operation(summary = "Get an Event", description = "Get a specific Event by its ID")
+    @PreAuthorize("hasRole('ROLE_USER')")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Returns task", content = @Content(schema = @Schema(implementation = EventDTO.class))),
 			@ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content()),
@@ -56,6 +58,7 @@ public class EventController {
     }
     
     @Tag(name = "Event")
+    @PreAuthorize("hasRole('ROLE_USER')")
    	@Operation(summary = "Get all Events", description = "Get all existing event")
    	@ApiResponses(value = {
    			@ApiResponse(responseCode = "200", description = "Returns events", content = @Content(schema = @Schema(implementation = EventDTO.class))),
@@ -76,6 +79,7 @@ public class EventController {
        }
     
     @Tag(name = "Event")
+    @PreAuthorize("hasRole('ROLE_USER')")
    	@Operation(summary = "create an Event", description = "create a task with given Event infos")
    	@ApiResponses(value = {
    			@ApiResponse(responseCode = "201", description = "Event successfully created", content = @Content(schema = @Schema(implementation = EventDTO.class))),
@@ -99,6 +103,7 @@ public class EventController {
        }
     
     @Tag(name = "Event")
+    @PreAuthorize("hasRole('ROLE_USER')")
    	@Operation(summary = "update a Event", description = "Update an existing Event with given Event infos")
    	@ApiResponses(value = {
    			@ApiResponse(responseCode = "200", description = "Event successfully updated", content = @Content(schema = @Schema(implementation = EventDTO.class))),
