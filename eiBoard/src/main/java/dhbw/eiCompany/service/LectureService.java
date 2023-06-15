@@ -59,11 +59,19 @@ public class LectureService {
 			} catch (MalformedURLException | IllegalAccessException | NoConnectionException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-
 			}
-			dayList.add(day);
-		}
-		return dayList;
-	}
+	    	   for(ArrayList<Appointment> value  : data.values()){
+	    		   ScheduleDay day = new ScheduleDay();
+	               for(Appointment app : value){
+	                   final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+	                   final LocalDate dt =  LocalDate.parse(app.getDate(), dtf);
+	                   dt.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+	                   Lecture lecture = new Lecture(app.getPersons(), app.getResources(), app.getTitle(), app.getStartDate(), app.getEndDate(), dt );
+	                   day.addLecture(lecture);
+	               }
+	               dayList.add(day);
+	           }
+	    	   return dayList;
+	    }
 
 }
