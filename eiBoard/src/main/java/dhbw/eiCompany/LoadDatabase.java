@@ -19,7 +19,7 @@ public class LoadDatabase {
     @Bean
 	public CommandLineRunner initDatabase() {
 		return args -> {
- System.out.println(BlobConverter.convertFileToBase64String(new File("C:\\Users\\mstaar\\Desktop\\examplePicture.png")).toString());
+
 //        Person julian = new Person();
 //        julian.setName("Julian Stadler");
 //        julian.setEmail("julian@stadler-privat.de");
