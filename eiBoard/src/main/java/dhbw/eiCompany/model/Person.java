@@ -47,6 +47,9 @@ public class Person {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "person", orphanRemoval = true)
     private List<Event> events = new ArrayList<>();
     
+    private String password;
+    
+    
     public Person(){
 
     }
@@ -59,6 +62,16 @@ public class Person {
         this.lastName = lastName;
         this.firstName = firstName;
     }
+    
+    
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	public Long getUserId() {
 		return userId;

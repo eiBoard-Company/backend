@@ -5,14 +5,26 @@ public class PersonCreateDTO {
 	private String lastName;
 	private String firstName;
 	private String email;
+	private String password;
 	
-	public PersonCreateDTO (String lastName, String firstName, String email) {
+	public PersonCreateDTO (String lastName, String firstName, String email, String password) {
 		this.email = email;
+		this.password = password;
 		this.lastName = lastName;
 		this.firstName = firstName;
 	}
 
 	
+	public String getPassword() {
+		return password;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
 	public PersonCreateDTO() {
 	}
 

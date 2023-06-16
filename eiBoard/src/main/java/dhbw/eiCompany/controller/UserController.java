@@ -157,16 +157,14 @@ public class UserController {
 			@ApiResponse(responseCode = "200", description = "Returns created user", content = @Content(schema = @Schema(implementation = PersonDTO.class))),
 			@ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content()),
 			@ApiResponse(responseCode = "403", description = "Unauthorized", content = @Content()),
+			@ApiResponse(responseCode = "409", description = "User already exists"),
 			@ApiResponse(responseCode = "406", description = "Wrong Content")})
     @PostMapping(path="/user")
     private ResponseEntity<PersonDTO> saveUser(@RequestBody PersonCreateDTO dto){
     	Person p = personMapper.personCreateDTOToPerson(dto);
     	p.setRaplaLink(lectureService.url);
-    	p =  personService.saveOrUpdate(p);
-    	if(p == null) {
-    		return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
-    	}
-        return new ResponseEntity<>(personMapper.personToPersonDTO(p), HttpStatus.CREATED);
+    	return personService.create(p);
+    	
     }
     
     @Tag(name = "User")
@@ -185,7 +183,7 @@ public class UserController {
     	if(personService.findById(person.getId()) == null) {
     		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     	}
-    	Person p =  personService.saveOrUpdate(personMapper.personDTOtoPerson(person));
+    	Person p =  personService.update(personMapper.personDTOtoPerson(person));
     	if(p == null) {
     		return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
     	}

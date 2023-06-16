@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -25,8 +26,10 @@ public class WebSecurityConfiguration extends KeycloakWebSecurityConfigurerAdapt
 
 		http.cors().disable();
 		http.authorizeRequests().antMatchers("/v3/api-docs/**").permitAll();
-		http.authorizeRequests().antMatchers("/swagger-ui/**").authenticated();
+		http.authorizeRequests().antMatchers("/swagger-ui/**").permitAll();
 		http.authorizeRequests().antMatchers("/h2-console/**").permitAll();
+		
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/user").permitAll();
 		http.authorizeRequests().anyRequest().authenticated();
 		http.csrf().disable();
 		http.headers().frameOptions().sameOrigin();

@@ -119,6 +119,7 @@ public class PersonMapper {
 		p.setEmail(dto.getEmail());
 		p.setFirstName(dto.getFirstName());
 		p.setLastName(dto.getLastName());
+		p.setPassword(dto.getPassword());
 		return p;
 	}
 	
@@ -130,6 +131,7 @@ public class PersonMapper {
 		dto.setEmail(p.getEmail());
 		dto.setFirstName(p.getFirstName());
 		dto.setLastName(p.getLastName());
+		dto.setPassword(p.getPassword());
 		return dto;
 	}
 }
