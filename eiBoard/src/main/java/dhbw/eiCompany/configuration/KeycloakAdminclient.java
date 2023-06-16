@@ -26,7 +26,7 @@ public class KeycloakAdminclient {
         if(keycloak == null){
         	Boolean test = false;
         	
-        	if(test = true) {
+        	if(test == true) {
         		serverUrl ="http://localhost:8089";
         		clientId = "eiClient";
         		clientSecret = "VRFwDMC5zGRTSukvRp9hmghLbI4mxyhq";
