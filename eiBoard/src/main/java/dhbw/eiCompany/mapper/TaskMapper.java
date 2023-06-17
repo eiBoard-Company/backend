@@ -1,5 +1,7 @@
 package dhbw.eiCompany.mapper;
 
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +14,7 @@ public class TaskMapper {
 	@Autowired
 	PersonMapper personMapper;
 	
-	
+
 	
 	public Task taskDTOtoTask(TaskDTO dto) {
 		if(dto == null) {
@@ -21,11 +23,11 @@ public class TaskMapper {
 		Task e = new Task();
 		e.setId(dto.getId());
 		e.setDescription(dto.getDescription());
-		e.setCategory(dto.getCategory());
-		e.setEndDate(dto.getEndDate());
-		e.setTitel(dto.getTitel());
-		e.setProgress(dto.getProgress());
-		e.setStatus(dto.getStatus());
+		e.setCategory(dto.getDueValue());
+		e.setEndDate(dto.getTime());
+		e.setTitel(dto.getTaskname());
+		e.setProgress(dto.getCompleteValue());
+		e.setStatus(dto.getSubject());
 		return e;
 	}
 	
@@ -37,12 +39,12 @@ public class TaskMapper {
 		TaskDTO dto = new TaskDTO();
 		dto.setId(e.getId());
 		dto.setDescription(e.getDescription());
-		dto.setCategory(e.getCategory());
+		dto.setDueValue(e.getCategory());;
 		dto.setPersonId(e.getPerson().getUserId());
-		dto.setEndDate(e.getEndDate());
-		dto.setTitel(e.getTitel());
-		dto.setProgress(e.getProgress());
-		dto.setStatus(e.getStatus());
+		dto.setTime(e.getEndDate());
+		dto.setTaskname(e.getTitel());
+		dto.setCompleteValue(e.getProgress());
+		dto.setSubject(e.getStatus());
 		return dto;
 		
 		

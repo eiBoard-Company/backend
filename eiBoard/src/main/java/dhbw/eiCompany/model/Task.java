@@ -31,7 +31,7 @@ public class Task {
 	@Column
 	private String status;
 	@Column
-	private int progress;
+	private double progress;
 	@Column
 	private String category;
 	
@@ -43,7 +43,7 @@ public class Task {
 	}
 	
 
-	public Task(String titel, String description, LocalDateTime endDate, String status, int progress,
+	public Task(String titel, String description, LocalDateTime endDate, String status, double progress,
 			String category) {
 		super();
 		this.titel = titel;
@@ -86,12 +86,12 @@ public class Task {
 	}
 
 
-	public int getProgress() {
+	public double getProgress() {
 		return progress;
 	}
 
 
-	public void setProgress(int progress) {
+	public void setProgress(double progress) {
 		this.progress = progress;
 	}
 

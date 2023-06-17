@@ -7,7 +7,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import dhbw.eiCompany.repositories.TypeRepository;
 import dhbw.eiCompany.repositories.UsersRepository;
 
 @Configuration

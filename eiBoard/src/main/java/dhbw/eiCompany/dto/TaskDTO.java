@@ -9,28 +9,28 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TaskDTO {
-		private Long id;
-		private String titel;
-		private LocalDateTime endDate;
-		private String status;
-		private int progress;
-		private String category;
-		private Long personId;
+		private Long id;			 //typId im Frontend
+		private String taskname; 	 // früher titel
 		private String description;
+		private LocalDateTime time;  //früher endDate
+		private String subject;		 //früher: status
+		private double completeValue;		 // früher progress
+		private String dueValue; 	 //früher category
+		private Long personId;
 		
 		public TaskDTO() {
 			
 		}
 		
-		public TaskDTO(Long id, String titel,  LocalDateTime endDate, String status, int progress,
-				String category, Long personId, String description) {
+		public TaskDTO(Long id, String taskname,  LocalDateTime time, String subject, double completeValue,
+				String dueValue, Long personId, String description) {
 			super();
 			this.id = id;
-			this.titel = titel;
-			this.endDate = endDate;
-			this.status = status;
-			this.progress = progress;
-			this.category = category;
+			this.taskname = taskname;
+			this.time = time;
+			this.subject = subject;
+			this.completeValue = completeValue;
+			this.dueValue = dueValue;
 			this.personId = personId;
 			this.description = description;
 		}
@@ -43,36 +43,36 @@ public class TaskDTO {
 		public void setId(Long id) {
 			this.id = id;
 		}
-		public String getTitel() {
-			return titel;
+		public String getTaskname() {
+			return taskname;
 		}
-		public void setTitel(String titel) {
-			this.titel = titel;
+		public void setTaskname(String taskname) {
+			this.taskname = taskname;
 		}
 
-		public LocalDateTime getEndDate() {
-			return endDate;
+		public LocalDateTime getTime() {
+			return time;
 		}
-		public void setEndDate(LocalDateTime endDate) {
-			this.endDate = endDate;
+		public void setTime(LocalDateTime time) {
+			this.time = time;
 		}
-		public String getStatus() {
-			return status;
+		public String getSubject() {
+			return subject;
 		}
-		public void setStatus(String status) {
-			this.status = status;
+		public void setSubject(String subject) {
+			this.subject = subject;
 		}
-		public int getProgress() {
-			return progress;
+		public double getCompleteValue() {
+			return completeValue;
 		}
-		public void setProgress(int progress) {
-			this.progress = progress;
+		public void setCompleteValue(double completeValue) {
+			this.completeValue = completeValue;
 		}
-		public String getCategory() {
-			return category;
+		public String getDueValue() {
+			return dueValue;
 		}
-		public void setCategory(String category) {
-			this.category = category;
+		public void setDueValue(String dueValue) {
+			this.dueValue = dueValue;
 		}
 
 

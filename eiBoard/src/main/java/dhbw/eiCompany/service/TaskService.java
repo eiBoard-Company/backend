@@ -61,9 +61,9 @@ public class TaskService {
 		
 	}
 	
-	public int addProgress(Long id, int percentToAdd) {
+	public double addProgress(Long id, double percentToAdd) {
 		Task t = findById(id);
-		int addedPercent = t.getProgress() + percentToAdd;
+		double addedPercent = t.getProgress() + percentToAdd;
 		if(addedPercent > 100) {
 			// TODO: Throw error
 			return 0;
@@ -75,7 +75,7 @@ public class TaskService {
 		
 	}
 	
-	public int setProgress(Long id, int percentToSet) {
+	public double setProgress(Long id, double percentToSet) {
 		Task t = findById(id);
 		if(percentToSet > 100) {
 			// TODO: Throw error

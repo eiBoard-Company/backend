@@ -154,7 +154,7 @@ public class UserController {
     @Tag(name = "User")
 	@Operation(summary = "Create a User", description = "Create  an existing User with data")
 	@ApiResponses(value = {
-			@ApiResponse(responseCode = "200", description = "Returns created user", content = @Content(schema = @Schema(implementation = PersonDTO.class))),
+			@ApiResponse(responseCode = "201", description = "Returns created user", content = @Content(schema = @Schema(implementation = PersonDTO.class))),
 			@ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content()),
 			@ApiResponse(responseCode = "403", description = "Unauthorized", content = @Content()),
 			@ApiResponse(responseCode = "409", description = "User already exists"),
