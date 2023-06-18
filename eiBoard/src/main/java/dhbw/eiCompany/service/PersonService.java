@@ -67,10 +67,22 @@ public class PersonService {
        return new ResponseEntity<>(personMapper.personToPersonDTO(p),HttpStatus.CREATED);
     }
     public Person update(Person name){
-    	
-    	
-        return usersRepository.save(name);
-     }
+    	Person allData = findById(name.getUserId());
+    	if(name.getEmail() == null) {
+    		name.setEmail(allData.getEmail());
+    	}if(name.getFirstName() == null) {
+    		name.setFirstName(allData.getFirstName());
+    	} if(name.getLastName() == null) {
+    		name.setLastName(allData.getLastName());
+    	} if(name.getRaplaLink() == null) {
+    		name.setRaplaLink(allData.getRaplaLink());
+    	} if(name.getPicture() == null) {
+    		name.setPicture(allData.getPicture());
+    	}
+    
+        usersRepository.updateUser(name.getPicture(), name.getEmail(), name.getFirstName(), name.getLastName(), name.getRaplaLink(), name.getUserId());
+    return findById(name.getUserId()); 
+    }
     public UsersResource getInstance(){
         return KeycloakAdminclient.getInstance().realm(KeycloakAdminclient.realm).users();
     }

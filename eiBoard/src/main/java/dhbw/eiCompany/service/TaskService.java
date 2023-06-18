@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import dhbw.eiCompany.dto.TaskDTO;
 import dhbw.eiCompany.mapper.TaskMapper;
+import dhbw.eiCompany.model.Person;
 import dhbw.eiCompany.model.Task;
 import dhbw.eiCompany.repositories.TaskRepository;
 
@@ -46,7 +47,22 @@ public class TaskService {
 	}
 	
 	public Task updateTask(Task updatedTask) {
-		return taskRepository.save(updatedTask);
+		Task allData = findById(updatedTask.getId());
+    	if(updatedTask.getCategory() == null) {
+    		updatedTask.setCategory(allData.getCategory());
+    	}if(updatedTask.getDescription() == null) {
+    		updatedTask.setDescription(allData.getDescription());
+    	} if(updatedTask.getEndDate() == null) {
+    		updatedTask.setEndDate(allData.getEndDate());
+    	} if(updatedTask.getProgress() == 0) {
+    		updatedTask.setProgress(allData.getProgress());
+    	} if(updatedTask.getTitel() == null) {
+    		updatedTask.setTitel(allData.getTitel());
+    	}if(updatedTask.getStatus() == null) {
+    		updatedTask.setStatus(allData.getStatus());
+    	}
+    	taskRepository.updateTask(updatedTask.getTitel(), updatedTask.getDescription(), updatedTask.getEndDate(), updatedTask.getStatus(), updatedTask.getProgress(), updatedTask.getCategory(), updatedTask.getId());
+		return findById(updatedTask.getId());
 	}
 	
 	public String updatedStatus(Long id) {

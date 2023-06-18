@@ -37,7 +37,7 @@ public class PersonMapper {
 		p.setLastName(dto.getLastName());
 		p.setPicture(blobMapper.mapBlob(dto.getPicture()));
 		p.setRaplaLink(dto.getRaplaLink());
-		p.setTasks(taskDTOtoTaskList(dto.getTaks()));
+		p.setTasks(taskDTOtoTaskList(dto.getTasks()));
 		p.setEvents(eventDTOtoEventList(dto.getEvents()));
 		return p;
 	}
@@ -106,7 +106,7 @@ public class PersonMapper {
 		dto.setLastName(person.getLastName());
 		dto.setPicture(blobMapper.mapBlob(person.getPicture()));
 		dto.setRaplaLink(person.getRaplaLink());
-		dto.setTaks(tasktoTaskDTOList(person.getTasks()));
+		dto.setTasks(tasktoTaskDTOList(person.getTasks()));
 		dto.setEvents(eventtoEventDTOList(person.getEvents()));
 		return dto;
 	}

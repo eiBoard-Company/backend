@@ -58,6 +58,18 @@ public class DateController {
     public @ResponseBody List<ScheduleDay> scheduleWeekFriday(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date){
     	return lectureService.getWeek(date);
     }
-     
+     @GetMapping(path = "/lectures/{date}/{date2}/all")
+     @Tag(name = "Lectures")
+     @PreAuthorize("hasRole('ROLE_USER')")
+ 	@Operation(summary = "Find a Lecture by a given date", description = "The Date has to be in the accepted ISO Format: yyyy-MM-dd it will return the entire week")
+ 	@ApiResponses(value = {
+ 			@ApiResponse(responseCode = "200", description = "Returns Lectures of a week by a given day", content = @Content(schema = @Schema(implementation = ScheduleDay.class))),
+ 			@ApiResponse(responseCode = "401", description = "Unauthorized", content = @Content()),
+ 			@ApiResponse(responseCode = "403", description = "Unauthorized", content = @Content()),
+ 			@ApiResponse(responseCode = "406", description = "Wrong Date Format")})
+
+    public @ResponseBody List<ScheduleDay> scheduleWeekFriday(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date, @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date2){
+    	return lectureService.getAllDate(date, date2);
+    }
     
 }

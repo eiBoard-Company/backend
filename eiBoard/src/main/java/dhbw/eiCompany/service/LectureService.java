@@ -48,6 +48,8 @@ public class LectureService {
 	           }
 	           return day;
 	    }
+	 
+	
 	    
 	   
 	    public List<ScheduleDay> getWeek(LocalDate date) {
@@ -70,6 +72,31 @@ public class LectureService {
 	                   day.addLecture(lecture);
 	               }
 	               dayList.add(day);
+	           }
+	    	   return dayList;
+	    }
+	    
+	    public List<ScheduleDay> getAllDate(LocalDate date, LocalDate end) {
+	    	List<ScheduleDay> dayList = new ArrayList<>();
+	    	Map<LocalDate, ArrayList<Appointment>> data = null;
+			try {
+				data = DataImporter.ImportWeekRange(date, end, url);
+			} catch (MalformedURLException | IllegalAccessException | NoConnectionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	    	   for(ArrayList<Appointment> value  : data.values()){
+	    		   ScheduleDay day = new ScheduleDay();
+	               for(Appointment app : value){
+	                   final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+	                   final LocalDate dt =  LocalDate.parse(app.getDate(), dtf);
+	                   dt.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+	                   Lecture lecture = new Lecture(app.getPersons(), app.getResources(), app.getTitle(), app.getStartDate(), app.getEndDate(), dt );
+	                   day.addLecture(lecture);
+	               }
+	               if(!day.getLectureList().isEmpty()) {
+	               dayList.add(day);
+	               }
 	           }
 	    	   return dayList;
 	    }

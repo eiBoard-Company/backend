@@ -124,12 +124,12 @@ public class TaskController {
     		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     	}
     	Task t = taskMapper.taskDTOtoTask(dto);
-    	Person p = personService.findById(dto.getPersonId());
-    	if(p == null) {
+    	Task t2 = taskService.findById(dto.getId());
+    	if(t2.getPerson() == null) {
     		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     	}
-    	t.setPerson(p);
-    	t = taskService.saveOrUpdate(t);
+    	t.setPerson(t2.getPerson());
+    	t = taskService.updateTask(t);
        	if(t == null) {
        		return new ResponseEntity<>(HttpStatus.CONFLICT);
        	}

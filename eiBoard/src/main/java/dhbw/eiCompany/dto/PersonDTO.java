@@ -25,7 +25,7 @@ public class PersonDTO {
 	private String email;
 	private String picture;
 	private String raplaLink;
-	private List<TaskDTO> taks = new ArrayList<>();
+	private List<TaskDTO> tasks = new ArrayList<>();
 	private List<EventDTO> events = new ArrayList<>();
 	
 	
@@ -77,12 +77,12 @@ public class PersonDTO {
 		this.raplaLink = raplaLink;
 	}
 
-	public List<TaskDTO> getTaks() {
-		return taks;
+	public List<TaskDTO> getTasks() {
+		return tasks;
 	}
 
-	public void setTaks(List<TaskDTO> taks) {
-		this.taks = taks;
+	public void setTasks(List<TaskDTO> taks) {
+		this.tasks = taks;
 	}
 
 	public List<EventDTO> getEvents() {
