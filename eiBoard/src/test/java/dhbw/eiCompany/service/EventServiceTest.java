@@ -7,10 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -35,6 +32,7 @@ public class EventServiceTest {
     }
 
     @Test
+    @Order(1)
     public void testFindById() {
         // Mocking
         Long eventId = 1L;
@@ -50,6 +48,7 @@ public class EventServiceTest {
     }
 
     @Test
+    @Order(2)
     public void testCreateEvent() {
         // Mocking
         Event event = new Event();
@@ -63,6 +62,7 @@ public class EventServiceTest {
     }
 
     @Test
+    @Order(3)
     public void testUpdateEvent() {
         // Mocking
         Event updatedEvent = new Event();
@@ -76,6 +76,7 @@ public class EventServiceTest {
     }
 
     @Test
+    @Order(4)
     public void testDeleteById() {
         // Test
         assertDoesNotThrow(() -> eventService.deleteById(1L));
@@ -85,6 +86,7 @@ public class EventServiceTest {
     }
 
     @Test
+    @Order(5)
     public void testDeleteByEvent() {
         // Mocking
         Event event = new Event();
@@ -97,6 +99,7 @@ public class EventServiceTest {
     }
 
     @Test
+    @Order(6)
     public void testAddProgress() {
         // Mocking
         Long eventId = 1L;
@@ -114,6 +117,7 @@ public class EventServiceTest {
     }
 
     @Test
+    @Order(7)
     public void testAddProgress_Exceeds100() {
         // Mocking
         Long eventId = 1L;
@@ -131,6 +135,7 @@ public class EventServiceTest {
     }
 
     @Test
+    @Order(8)
     public void testSetProgress() {
         // Mocking
         Long eventId = 1L;
@@ -149,6 +154,7 @@ public class EventServiceTest {
     }
 
     @Test
+    @Order(9)
     public void testSetProgress_Exceeds100() {
         // Mocking
         Long eventId = 1L;
@@ -166,6 +172,7 @@ public class EventServiceTest {
     }
 
     @Test
+    @Order(10)
     public void testFindAll() {
         // Mocking
         List<Event> events = new ArrayList<>();
