@@ -12,7 +12,8 @@ pipeline{
     stages {
         stage('Check out Repository') {
             steps{
-                git url: 'https://github.com/eiBoard-Company/Backend', branch: 'develop'
+                echo 'ls'
+                git url: 'https://github.com/eiBoard-Company/Backend.git', branch: 'develop'
                 echo 'Checked out repository'
             }
         }
