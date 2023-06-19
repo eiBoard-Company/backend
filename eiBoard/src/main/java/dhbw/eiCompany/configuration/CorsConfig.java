@@ -13,7 +13,6 @@ public class CorsConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**").allowedOrigins("http://eiboard.de")
         
-            .allowedOrigins("*")
             .allowedMethods("GET", "POST", "PUT", "DELETE")
             .allowedHeaders("*")
             

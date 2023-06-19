@@ -22,7 +22,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@CrossOrigin(origins = "http://eiBoard.de", maxAge = 3600)
+@CrossOrigin
 public class DateController {
 
 	@Autowired
