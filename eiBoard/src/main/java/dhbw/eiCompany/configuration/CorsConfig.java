@@ -11,9 +11,9 @@ public class CorsConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**").allowedOrigins("http://eiboard.de")
+        registry.addMapping("/**").allowedOrigins("*")
         
-            .allowedMethods("GET", "POST", "PUT", "DELETE")
+            .allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD")
             .allowedHeaders("*")
             
             .maxAge(3600);
