@@ -24,7 +24,7 @@ public class WebSecurityConfiguration extends KeycloakWebSecurityConfigurerAdapt
 	protected void configure(HttpSecurity http) throws Exception {
 		super.configure(http);
 
-		http.cors().disable();
+	
 		http.authorizeRequests().antMatchers("/v3/api-docs/**").permitAll();
 		http.authorizeRequests().antMatchers("/swagger-ui/**").permitAll();
 		http.authorizeRequests().antMatchers("/h2-console/**").permitAll();
@@ -32,7 +32,6 @@ public class WebSecurityConfiguration extends KeycloakWebSecurityConfigurerAdapt
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/user").permitAll();
 		http.authorizeRequests().anyRequest().authenticated();
 		http.csrf().disable();
-		http.headers().frameOptions().sameOrigin();
 	}
 
 	@Autowired
