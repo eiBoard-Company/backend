@@ -30,7 +30,7 @@ public class WebSecurityConfiguration extends KeycloakWebSecurityConfigurerAdapt
 		http.authorizeRequests().antMatchers("/h2-console/**").permitAll();
 		
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/user").permitAll();
-		http.authorizeRequests().anyRequest().authenticated();
+		http.authorizeRequests().anyRequest().permitAll();
 		http.csrf().disable();
 	}
 

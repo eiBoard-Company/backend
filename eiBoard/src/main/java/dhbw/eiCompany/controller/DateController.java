@@ -30,7 +30,7 @@ public class DateController {
 	
     @GetMapping(path = "/lectures/{date}/day")
     @Tag(name = "Lectures")
-    @PreAuthorize("hasRole('ROLE_USER')")
+  //  @PreAuthorize("hasRole('ROLE_USER')")
 	@Operation(summary = "Find a Lecture by a given date", description = "The Date has to be in the accepted ISO Format: yyyy-MM-dd it will return only one day")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Returns Lectures of the given day", content = @Content(schema = @Schema(implementation = ScheduleDay.class))),
@@ -49,7 +49,7 @@ public class DateController {
     */
      @GetMapping(path = "/lectures/{date}/week")
      @Tag(name = "Lectures")
-     @PreAuthorize("hasRole('ROLE_USER')")
+   //  @PreAuthorize("hasRole('ROLE_USER')")
  	@Operation(summary = "Find a Lecture by a given date", description = "The Date has to be in the accepted ISO Format: yyyy-MM-dd it will return the entire week")
  	@ApiResponses(value = {
  			@ApiResponse(responseCode = "200", description = "Returns Lectures of a week by a given day", content = @Content(schema = @Schema(implementation = ScheduleDay.class))),
@@ -62,7 +62,7 @@ public class DateController {
     }
      @GetMapping(path = "/lectures/{date}/{date2}/all")
      @Tag(name = "Lectures")
-     @PreAuthorize("hasRole('ROLE_USER')")
+   //  @PreAuthorize("hasRole('ROLE_USER')")
  	@Operation(summary = "Find a Lecture by a given date", description = "The Date has to be in the accepted ISO Format: yyyy-MM-dd it will return the entire week")
  	@ApiResponses(value = {
  			@ApiResponse(responseCode = "200", description = "Returns Lectures of a week by a given day", content = @Content(schema = @Schema(implementation = ScheduleDay.class))),

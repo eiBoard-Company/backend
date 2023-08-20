@@ -11,11 +11,8 @@ public class CorsConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**").allowedOrigins("*")
-        
-            .allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD")
-            .allowedHeaders("*")
-            
-            .maxAge(3600);
+        registry.addMapping("/**")
+        .allowedOrigins("http://185.252.235.49", "http://185.252.235.49:80", "http://185.252.235.49:8089", "http://185.252.235.49:8090", "http://185.252.235.49:8080")
+            .allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD") ;
     }
 } 
