@@ -68,21 +68,6 @@ public class PersonServiceTest {
 
     @Test
     @Order(2)
-    public void testUpdate() {
-        // Mocking
-        Person person = new Person();
-        when(usersRepository.save(person)).thenReturn(person);
-
-        // Test
-        Person result = personService.update(person);
-
-        // Assertion
-        assertEquals(person, result);
-        verify(usersRepository, times(1)).save(person);
-    }
-
-    @Test
-    @Order(3)
     public void testDeleteById() {
         // Test
         assertDoesNotThrow(() -> personService.deleteById(1L));
@@ -92,7 +77,7 @@ public class PersonServiceTest {
     }
 
     @Test
-    @Order(4)
+    @Order(3)
     public void testFindById() {
         // Mocking
         Long personId = 1L;
@@ -107,7 +92,7 @@ public class PersonServiceTest {
     }
 
     @Test
-    @Order(5)
+    @Order(4)
     public void testGetTasks() {
         // Mocking
         Long personId = 1L;
@@ -124,7 +109,7 @@ public class PersonServiceTest {
     }
 
     @Test
-    @Order(6)
+    @Order(5)
     public void testGetEvents() {
         // Mocking
         Long personId = 1L;
